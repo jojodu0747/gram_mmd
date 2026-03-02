@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pth
+*.pt
+*.pkl
+venv/
+.venv/
+dataset/
+results/
+*.egg-info/
+dist/
+build/
+.cache/

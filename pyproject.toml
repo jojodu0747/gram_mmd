@@ -1,0 +1,26 @@
+[project]
+name = "gram-mmd"
+version = "0.1.0"
+description = "Image quality metric based on MMD on Gram matrices from pre-trained backbones"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "scikit-learn>=1.2.0",
+    "Pillow>=9.4.0",
+    "matplotlib>=3.7.0",
+    "diffusers>=0.25.0",
+    "lpips>=0.1.4",
+]
+
+[project.optional-dependencies]
+clip = ["transformers>=4.30.0"]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
