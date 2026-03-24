@@ -1,0 +1,298 @@
+13:14:49  INFO      Device: cuda
+13:14:49  INFO      Parsing KADID DMOS CSV …
+13:14:49  INFO      Saved group order to /home/jnapolitano/Documents/metrique/experiments/cache/group_order.json
+13:14:49  INFO      Group order: rank 0 = type 1 level 1 (DMOS=4.612), rank 124 = type 2 level 5 (DMOS=1.299)
+13:14:49  INFO      COCO split: 20 refs, 1000 anchors
+13:14:49  INFO      Initialising FeatureExtractor (sd_vae, layer=11) …
+13:14:49  INFO      Loading backbone: sd_vae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+13:14:50  INFO      HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+13:14:50  INFO      HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/stabilityai/sd-vae-ft-mse/31f26fdeee1355a5c34592e401dd41e45d25a493/config.json "HTTP/1.1 200 OK"
+13:14:51  INFO      HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/31f26fdeee1355a5c34592e401dd41e45d25a493/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+13:14:51  INFO      Extracting anchor features for 1000 images …
+13:14:52  INFO        Anchor: 8/1000
+13:14:54  INFO        Anchor: 88/1000
+13:14:56  INFO        Anchor: 168/1000
+13:14:58  INFO        Anchor: 248/1000
+13:15:00  INFO        Anchor: 328/1000
+13:15:01  INFO        Anchor: 408/1000
+13:15:03  INFO        Anchor: 488/1000
+13:15:05  INFO        Anchor: 568/1000
+13:15:07  INFO        Anchor: 648/1000
+13:15:09  INFO        Anchor: 728/1000
+13:15:11  INFO        Anchor: 808/1000
+13:15:13  INFO        Anchor: 888/1000
+13:15:15  INFO        Anchor: 968/1000
+13:15:16  INFO      Anchor features saved: (1000, 512) → /home/jnapolitano/Documents/metrique/experiments/cache/anc_sd_vae_L11.npy
+13:15:16  INFO      Anchor features shape: (1000, 512)  (D=512)
+13:15:16  INFO      Gamma (median heuristic, n_sub=500): 88103.0078
+13:15:16  INFO      Extracting distorted features (shape (125, 20, 512)) …
+13:15:16  INFO      Group   0/124 – distortion type= 1, level=1  (mean DMOS=4.612)
+13:15:17  INFO      Group   1/124 – distortion type= 3, level=1  (mean DMOS=4.604)
+13:15:17  INFO      Group   2/124 – distortion type=18, level=3  (mean DMOS=4.603)
+13:15:18  INFO      Group   3/124 – distortion type=17, level=1  (mean DMOS=4.600)
+13:15:18  INFO      Group   4/124 – distortion type= 8, level=1  (mean DMOS=4.580)
+13:15:20  INFO      Group   5/124 – distortion type= 9, level=1  (mean DMOS=4.553)
+13:15:20  INFO      Group   6/124 – distortion type=17, level=2  (mean DMOS=4.528)
+13:15:21  INFO      Group   7/124 – distortion type=18, level=2  (mean DMOS=4.519)
+13:15:21  INFO      Group   8/124 – distortion type=16, level=1  (mean DMOS=4.506)
+13:15:22  INFO      Group   9/124 – distortion type= 4, level=1  (mean DMOS=4.495)
+13:15:23  INFO      Group  10/124 – distortion type=12, level=1  (mean DMOS=4.468)
+13:15:24  INFO      Group  11/124 – distortion type=19, level=1  (mean DMOS=4.419)
+13:15:24  INFO      Group  12/124 – distortion type=14, level=1  (mean DMOS=4.404)
+13:15:25  INFO      Group  13/124 – distortion type= 1, level=2  (mean DMOS=4.382)
+13:15:25  INFO      Group  14/124 – distortion type=18, level=4  (mean DMOS=4.370)
+13:15:26  INFO      Group  15/124 – distortion type=10, level=1  (mean DMOS=4.338)
+13:15:27  INFO      Group  16/124 – distortion type=20, level=1  (mean DMOS=4.333)
+13:15:27  INFO      Group  17/124 – distortion type=25, level=3  (mean DMOS=4.290)
+13:15:28  INFO      Group  18/124 – distortion type=16, level=2  (mean DMOS=4.288)
+13:15:29  INFO      Group  19/124 – distortion type=10, level=2  (mean DMOS=4.246)
+13:15:30  INFO      Group  20/124 – distortion type=17, level=3  (mean DMOS=4.231)
+13:15:30  INFO      Group  21/124 – distortion type= 5, level=1  (mean DMOS=4.227)
+13:15:31  INFO      Group  22/124 – distortion type=18, level=1  (mean DMOS=4.218)
+13:15:31  INFO      Group  23/124 – distortion type= 9, level=2  (mean DMOS=4.205)
+13:15:32  INFO      Group  24/124 – distortion type=22, level=1  (mean DMOS=4.169)
+13:15:32  INFO      Group  25/124 – distortion type=25, level=4  (mean DMOS=4.141)
+13:15:33  INFO      Group  26/124 – distortion type= 6, level=1  (mean DMOS=4.108)
+13:15:34  INFO      Group  27/124 – distortion type= 3, level=2  (mean DMOS=4.095)
+13:15:34  INFO      Group  28/124 – distortion type=19, level=2  (mean DMOS=4.086)
+13:15:35  INFO      Group  29/124 – distortion type= 6, level=2  (mean DMOS=3.973)
+13:15:35  INFO      Group  30/124 – distortion type=20, level=2  (mean DMOS=3.938)
+13:15:36  INFO      Group  31/124 – distortion type=22, level=2  (mean DMOS=3.933)
+13:15:36  INFO      Group  32/124 – distortion type=18, level=5  (mean DMOS=3.903)
+13:15:37  INFO      Group  33/124 – distortion type=11, level=1  (mean DMOS=3.893)
+13:15:38  INFO      Group  34/124 – distortion type=21, level=1  (mean DMOS=3.889)
+13:15:39  INFO      Group  35/124 – distortion type= 9, level=3  (mean DMOS=3.873)
+13:15:39  INFO      Group  36/124 – distortion type=10, level=3  (mean DMOS=3.866)
+13:15:40  INFO      Group  37/124 – distortion type= 2, level=1  (mean DMOS=3.862)
+13:15:40  INFO      Group  38/124 – distortion type=25, level=2  (mean DMOS=3.858)
+13:15:41  INFO      Group  39/124 – distortion type=20, level=3  (mean DMOS=3.773)
+13:15:42  INFO      Group  40/124 – distortion type= 6, level=3  (mean DMOS=3.719)
+13:15:42  INFO      Group  41/124 – distortion type=22, level=3  (mean DMOS=3.686)
+13:15:43  INFO      Group  42/124 – distortion type=12, level=2  (mean DMOS=3.682)
+13:15:43  INFO      Group  43/124 – distortion type=15, level=1  (mean DMOS=3.668)
+13:15:44  INFO      Group  44/124 – distortion type=16, level=3  (mean DMOS=3.632)
+13:15:45  INFO      Group  45/124 – distortion type=13, level=1  (mean DMOS=3.584)
+13:15:46  INFO      Group  46/124 – distortion type=14, level=2  (mean DMOS=3.581)
+13:15:46  INFO      Group  47/124 – distortion type=24, level=1  (mean DMOS=3.579)
+13:15:47  INFO      Group  48/124 – distortion type=17, level=4  (mean DMOS=3.535)
+13:15:47  INFO      Group  49/124 – distortion type=20, level=4  (mean DMOS=3.464)
+13:15:48  INFO      Group  50/124 – distortion type=25, level=1  (mean DMOS=3.419)
+13:15:49  INFO      Group  51/124 – distortion type=11, level=2  (mean DMOS=3.390)
+13:15:49  INFO      Group  52/124 – distortion type=22, level=4  (mean DMOS=3.373)
+13:15:50  INFO      Group  53/124 – distortion type= 8, level=2  (mean DMOS=3.330)
+13:15:51  INFO      Group  54/124 – distortion type=25, level=5  (mean DMOS=3.324)
+13:15:52  INFO      Group  55/124 – distortion type=20, level=5  (mean DMOS=3.261)
+13:15:52  INFO      Group  56/124 – distortion type=19, level=3  (mean DMOS=3.235)
+13:15:53  INFO      Group  57/124 – distortion type= 6, level=4  (mean DMOS=3.203)
+13:15:54  INFO      Group  58/124 – distortion type=12, level=3  (mean DMOS=3.170)
+13:15:54  INFO      Group  59/124 – distortion type=21, level=2  (mean DMOS=3.098)
+13:15:56  INFO      Group  60/124 – distortion type=14, level=3  (mean DMOS=3.084)
+13:15:56  INFO      Group  61/124 – distortion type=11, level=3  (mean DMOS=3.045)
+13:15:57  INFO      Group  62/124 – distortion type=13, level=2  (mean DMOS=2.930)
+13:15:57  INFO      Group  63/124 – distortion type= 1, level=3  (mean DMOS=2.911)
+13:15:58  INFO      Group  64/124 – distortion type=21, level=3  (mean DMOS=2.900)
+13:16:01  INFO      Group  65/124 – distortion type= 3, level=3  (mean DMOS=2.848)
+13:16:01  INFO      Group  66/124 – distortion type=22, level=5  (mean DMOS=2.799)
+13:16:02  INFO      Group  67/124 – distortion type=21, level=4  (mean DMOS=2.794)
+13:16:07  INFO      Group  68/124 – distortion type= 7, level=1  (mean DMOS=2.746)
+13:16:07  INFO      Group  69/124 – distortion type=15, level=2  (mean DMOS=2.727)
+13:16:08  INFO      Group  70/124 – distortion type=11, level=4  (mean DMOS=2.710)
+13:16:08  INFO      Group  71/124 – distortion type=16, level=4  (mean DMOS=2.701)
+13:16:10  INFO      Group  72/124 – distortion type=12, level=4  (mean DMOS=2.687)
+13:16:10  INFO      Group  73/124 – distortion type=23, level=1  (mean DMOS=2.687)
+13:16:11  INFO      Group  74/124 – distortion type= 2, level=2  (mean DMOS=2.654)
+13:16:11  INFO      Group  75/124 – distortion type= 8, level=3  (mean DMOS=2.648)
+13:16:12  INFO      Group  76/124 – distortion type=14, level=4  (mean DMOS=2.639)
+13:16:13  INFO      Group  77/124 – distortion type=24, level=2  (mean DMOS=2.636)
+13:16:13  INFO      Group  78/124 – distortion type=13, level=3  (mean DMOS=2.613)
+13:16:14  INFO      Group  79/124 – distortion type= 4, level=2  (mean DMOS=2.602)
+13:16:15  INFO      Group  80/124 – distortion type= 5, level=2  (mean DMOS=2.545)
+13:16:15  INFO      Group  81/124 – distortion type= 9, level=4  (mean DMOS=2.445)
+13:16:16  INFO      Group  82/124 – distortion type= 6, level=5  (mean DMOS=2.425)
+13:16:17  INFO      Group  83/124 – distortion type=12, level=5  (mean DMOS=2.380)
+13:16:17  INFO      Group  84/124 – distortion type=23, level=2  (mean DMOS=2.359)
+13:16:18  INFO      Group  85/124 – distortion type= 7, level=2  (mean DMOS=2.335)
+13:16:18  INFO      Group  86/124 – distortion type=13, level=4  (mean DMOS=2.312)
+13:16:19  INFO      Group  87/124 – distortion type=11, level=5  (mean DMOS=2.301)
+13:16:19  INFO      Group  88/124 – distortion type=23, level=3  (mean DMOS=2.300)
+13:16:20  INFO      Group  89/124 – distortion type= 7, level=3  (mean DMOS=2.262)
+13:16:20  INFO      Group  90/124 – distortion type= 7, level=4  (mean DMOS=2.243)
+13:16:21  INFO      Group  91/124 – distortion type=17, level=5  (mean DMOS=2.221)
+13:16:21  INFO      Group  92/124 – distortion type=15, level=3  (mean DMOS=2.203)
+13:16:22  INFO      Group  93/124 – distortion type= 3, level=4  (mean DMOS=2.175)
+13:16:23  INFO      Group  94/124 – distortion type=24, level=3  (mean DMOS=2.136)
+13:16:23  INFO      Group  95/124 – distortion type=13, level=5  (mean DMOS=2.132)
+13:16:24  INFO      Group  96/124 – distortion type=23, level=4  (mean DMOS=2.126)
+13:16:24  INFO      Group  97/124 – distortion type=14, level=5  (mean DMOS=2.117)
+13:16:25  INFO      Group  98/124 – distortion type=23, level=5  (mean DMOS=2.035)
+13:16:25  INFO      Group  99/124 – distortion type= 7, level=5  (mean DMOS=2.027)
+13:16:26  INFO      Group 100/124 – distortion type=10, level=4  (mean DMOS=1.945)
+13:16:26  INFO      Group 101/124 – distortion type= 5, level=3  (mean DMOS=1.916)
+13:16:27  INFO      Group 102/124 – distortion type= 1, level=4  (mean DMOS=1.873)
+13:16:28  INFO      Group 103/124 – distortion type= 5, level=5  (mean DMOS=1.864)
+13:16:28  INFO      Group 104/124 – distortion type= 5, level=4  (mean DMOS=1.854)
+13:16:29  INFO      Group 105/124 – distortion type=19, level=4  (mean DMOS=1.849)
+13:16:30  INFO      Group 106/124 – distortion type= 8, level=4  (mean DMOS=1.816)
+13:16:31  INFO      Group 107/124 – distortion type=16, level=5  (mean DMOS=1.809)
+13:16:32  INFO      Group 108/124 – distortion type= 4, level=3  (mean DMOS=1.756)
+13:16:33  INFO      Group 109/124 – distortion type= 2, level=3  (mean DMOS=1.756)
+13:16:34  INFO      Group 110/124 – distortion type= 3, level=5  (mean DMOS=1.668)
+13:16:34  INFO      Group 111/124 – distortion type=15, level=4  (mean DMOS=1.655)
+13:16:35  INFO      Group 112/124 – distortion type=24, level=4  (mean DMOS=1.613)
+13:16:36  INFO      Group 113/124 – distortion type= 4, level=4  (mean DMOS=1.605)
+13:16:37  INFO      Group 114/124 – distortion type= 8, level=5  (mean DMOS=1.525)
+13:16:38  INFO      Group 115/124 – distortion type=21, level=5  (mean DMOS=1.496)
+13:16:47  INFO      Group 116/124 – distortion type=15, level=5  (mean DMOS=1.467)
+13:16:48  INFO      Group 117/124 – distortion type= 2, level=4  (mean DMOS=1.442)
+13:16:49  INFO      Group 118/124 – distortion type= 4, level=5  (mean DMOS=1.394)
+13:16:50  INFO      Group 119/124 – distortion type= 9, level=5  (mean DMOS=1.394)
+13:16:50  INFO      Group 120/124 – distortion type=10, level=5  (mean DMOS=1.350)
+13:16:51  INFO      Group 121/124 – distortion type=19, level=5  (mean DMOS=1.339)
+13:16:53  INFO      Group 122/124 – distortion type=24, level=5  (mean DMOS=1.336)
+13:16:54  INFO      Group 123/124 – distortion type= 1, level=5  (mean DMOS=1.303)
+13:16:54  INFO      Group 124/124 – distortion type= 2, level=5  (mean DMOS=1.299)
+13:16:55  INFO      Distorted features saved to /home/jnapolitano/Documents/metrique/experiments/cache/dist_sd_vae_L11.npy
+13:16:55  INFO      Computing MMD² for each of the 125 groups …
+13:16:55  INFO      MMD² computation done.
+13:16:55  INFO      Results saved to /home/jnapolitano/Documents/metrique/results/synthetic_kadid_coco/summary_20260313_131655.csv
+13:16:55  INFO      Scatter plot saved to /home/jnapolitano/Documents/metrique/results/synthetic_kadid_coco/scatter_20260313_131655.png
+
+Rank  Type  Level   MeanDMOS            MMD2
+--------------------------------------------
+   0     1      1     4.6122       -0.003739
+   1     3      1     4.6041       -0.009471
+   2    18      3     4.6030        0.177772
+   3    17      1     4.6004       -0.009967
+   4     8      1     4.5798        0.000563
+   5     9      1     4.5531       -0.010155
+   6    17      2     4.5275       -0.005260
+   7    18      2     4.5188        0.019928
+   8    16      1     4.5057       -0.009375
+   9     4      1     4.4951        0.098797
+  10    12      1     4.4684       -0.011246
+  11    19      1     4.4194       -0.005230
+  12    14      1     4.4044       -0.009764
+  13     1      2     4.3817        0.066833
+  14    18      4     4.3695        0.418273
+  15    10      1     4.3380       -0.008289
+  16    20      1     4.3333       -0.002807
+  17    25      3     4.2901        0.213946
+  18    16      2     4.2875       -0.005706
+  19    10      2     4.2456        0.016169
+  20    17      3     4.2309       -0.008598
+  21     5      1     4.2267        0.017047
+  22    18      1     4.2180       -0.010438
+  23     9      2     4.2047       -0.009296
+  24    22      1     4.1685        0.010397
+  25    25      4     4.1415        0.314287
+  26     6      1     4.1081        0.065620
+  27     3      2     4.0952        0.005359
+  28    19      2     4.0864        0.030799
+  29     6      2     3.9733        0.201725
+  30    20      2     3.9379        0.066542
+  31    22      2     3.9335        0.056561
+  32    18      5     3.9033        0.564311
+  33    11      1     3.8932       -0.009637
+  34    21      1     3.8891        0.045764
+  35     9      3     3.8733       -0.003207
+  36    10      3     3.8658        0.131670
+  37     2      1     3.8625        0.005481
+  38    25      2     3.8584        0.137152
+  39    20      3     3.7726        0.200567
+  40     6      3     3.7186        0.448792
+  41    22      3     3.6859        0.134587
+  42    12      2     3.6825       -0.000559
+  43    15      1     3.6677       -0.000767
+  44    16      3     3.6323        0.011792
+  45    13      1     3.5838        0.005243
+  46    14      2     3.5815       -0.008384
+  47    24      1     3.5790       -0.010396
+  48    17      4     3.5349       -0.004513
+  49    20      4     3.4644        0.289110
+  50    25      1     3.4194        0.038135
+  51    11      2     3.3904       -0.007373
+  52    22      4     3.3728        0.245652
+  53     8      2     3.3305        0.035683
+  54    25      5     3.3238        0.355423
+  55    20      5     3.2612        0.352092
+  56    19      3     3.2352        0.118184
+  57     6      4     3.2028        0.616766
+  58    12      3     3.1700        0.028221
+  59    21      2     3.0983        0.275923
+  60    14      3     3.0842       -0.000112
+  61    11      3     3.0451        0.002882
+  62    13      2     2.9304        0.022616
+  63     1      3     2.9111        0.203173
+  64    21      3     2.8998        0.490548
+  65     3      3     2.8479        0.048792
+  66    22      5     2.7990        0.380553
+  67    21      4     2.7943        0.648075
+  68     7      1     2.7463        0.038846
+  69    15      2     2.7272        0.037303
+  70    11      4     2.7096        0.037076
+  71    16      4     2.7009        0.048911
+  72    12      4     2.6872        0.054868
+  73    23      1     2.6870       -0.008138
+  74     2      2     2.6536        0.095665
+  75     8      3     2.6484        0.121150
+  76    14      4     2.6394        0.026983
+  77    24      2     2.6359       -0.010356
+  78    13      3     2.6126        0.046807
+  79     4      2     2.6020        0.195401
+  80     5      2     2.5454        0.084022
+  81     9      4     2.4448        0.004706
+  82     6      5     2.4249        0.725853
+  83    12      5     2.3799        0.077420
+  84    23      2     2.3590        0.000388
+  85     7      2     2.3346        0.156641
+  86    13      4     2.3123        0.069286
+  87    11      5     2.3007        0.128707
+  88    23      3     2.2995        0.025998
+  89     7      3     2.2620        0.345211
+  90     7      4     2.2435        0.582557
+  91    17      5     2.2210        0.014546
+  92    15      3     2.2027        0.099631
+  93     3      4     2.1751        0.116987
+  94    24      3     2.1364       -0.010371
+  95    13      5     2.1319        0.093653
+  96    23      4     2.1262        0.092039
+  97    14      5     2.1173        0.162798
+  98    23      5     2.0352        0.178653
+  99     7      5     2.0274        0.798892
+ 100    10      4     1.9454        0.345195
+ 101     5      3     1.9163        0.210680
+ 102     1      4     1.8730        0.358229
+ 103     5      5     1.8638        0.733023
+ 104     5      4     1.8537        0.421844
+ 105    19      4     1.8485        0.281433
+ 106     8      4     1.8156        0.233675
+ 107    16      5     1.8093        0.125803
+ 108     4      3     1.7559        0.360890
+ 109     2      3     1.7558        0.217498
+ 110     3      5     1.6679        0.203076
+ 111    15      4     1.6549        0.124290
+ 112    24      4     1.6133       -0.010352
+ 113     4      4     1.6052        0.481618
+ 114     8      5     1.5249        0.342686
+ 115    21      5     1.4957        0.727723
+ 116    15      5     1.4665        0.171074
+ 117     2      4     1.4419        0.336541
+ 118     4      5     1.3938        0.571644
+ 119     9      5     1.3938        0.019503
+ 120    10      5     1.3502        0.410478
+ 121    19      5     1.3386        0.434540
+ 122    24      5     1.3359       -0.010460
+ 123     1      5     1.3027        0.501437
+ 124     2      5     1.2991        0.434387
+
+Spearman ρ = 0.4847 (p=1.02e-08)
+Kendall τ  = 0.3546 (p=4.51e-09)
+Strict mono = 50.8%  (63/124 consecutive pairs increasing)
+

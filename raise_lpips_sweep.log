@@ -1,0 +1,68 @@
+2026-03-12 15:36:13,154 INFO: Device : cuda
+2026-03-12 15:36:13,165 INFO: RAISE IA : 480 images  MOS [10.38…87.81]
+2026-03-12 15:36:13,165 INFO: 
+Extraction features LPIPS-VGG (13 layers, 1 passe)…
+2026-03-12 15:36:13,166 INFO:   Chargement LPIPS-VGG…
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+2026-03-12 15:36:14,189 INFO:   Extraction anchor (1000 imgs)…
+    32/1000    64/1000    96/1000    128/1000    160/1000    192/1000    224/1000    256/1000    288/1000    320/1000    352/1000    384/1000    416/1000    448/1000    480/1000    512/1000    544/1000    576/1000    608/1000    640/1000    672/1000    704/1000    736/1000    768/1000    800/1000    832/1000    864/1000    896/1000    928/1000    960/1000    992/1000    1000/10002026-03-12 15:36:21,006 INFO:   Extraction query (480 imgs)…
+
+    32/480    64/480    96/480    128/480    160/480    192/480    224/480    256/480    288/480    320/480    352/480    384/480    416/480    448/480    480/4802026-03-12 15:36:25,008 INFO:     L00  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:25,041 INFO:     L01  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:25,180 INFO:     L02  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:25,321 INFO:     L03  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:26,152 INFO:     L04  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:26,919 INFO:     L05  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:27,690 INFO:     L06  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:31,004 INFO:     L07  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:34,326 INFO:     L08  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:37,674 INFO:     L09  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:40,988 INFO:     L10  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:44,305 INFO:     L11  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:47,629 INFO:     L12  D_rr(1000, 1000)  D_rq(1000, 480)
+2026-03-12 15:36:47,848 INFO:   Features + distances : 34.7s
+2026-03-12 15:36:47,848 INFO: 
+Sweep 1 000 gammas × 13 layers…
+2026-03-12 15:36:48,080 INFO:   L00 relu1_1     ρ max = -0.0060
+2026-03-12 15:36:48,287 INFO:   L01 relu1_2     ρ max = +0.0131
+2026-03-12 15:36:48,478 INFO:   L02 relu2_1     ρ max = -0.0608
+2026-03-12 15:36:48,666 INFO:   L03 relu2_2     ρ max = -0.0527
+2026-03-12 15:36:48,843 INFO:   L04 relu3_1     ρ max = -0.0628
+2026-03-12 15:36:49,021 INFO:   L05 relu3_2     ρ max = -0.0377
+2026-03-12 15:36:49,198 INFO:   L06 relu3_3     ρ max = -0.0525
+2026-03-12 15:36:49,370 INFO:   L07 relu4_1     ρ max = +0.0097
+2026-03-12 15:36:49,540 INFO:   L08 relu4_2     ρ max = +0.0097
+2026-03-12 15:36:49,711 INFO:   L09 relu4_3     ρ max = +0.0097
+2026-03-12 15:36:49,881 INFO:   L10 relu5_1     ρ max = +0.0001
+2026-03-12 15:36:50,052 INFO:   L11 relu5_2     ρ max = +0.0161
+2026-03-12 15:36:50,226 INFO:   L12 relu5_3     ρ max = +0.0542
+2026-03-12 15:36:50,226 INFO:   Sweep : 2.4s
+2026-03-12 15:36:50,226 INFO: 
+Figures…
+2026-03-12 15:36:50,837 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/raise_lpips_sweep/plots/01_rho_vs_gamma.png
+2026-03-12 15:36:51,146 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/raise_lpips_sweep/plots/02_heatmap.png
+2026-03-12 15:36:51,196 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/raise_lpips_sweep/lpips_raise_sweep.csv
+2026-03-12 15:36:51,349 INFO: 
+Temps total : 38.2s  ·  Résultats : /home/jnapolitano/Documents/metrique/results/raise_lpips_sweep
+
+
+========================================================================
+  Layer  Nom           γ optimal     ρ max   ρ@median   ρ@10×med   ρ@50×med
+  ------------------------------------------------------------------
+  L12   relu5_3        9.59e-04   +0.0542    -0.0325    -0.0452    -0.1182
+  L11   relu5_2        1.14e-09   +0.0161    +0.0150    +0.0114    -0.0743
+  L01   relu1_2        6.67e-02   +0.0131    -0.0884    -0.1063    -0.1066
+  L07   relu4_1        2.89e-04   +0.0097    -0.0630    -0.0708    -0.1704
+  L08   relu4_2        2.95e-04   +0.0097    -0.0541    -0.0613    -0.1752
+  L09   relu4_3        2.89e-04   +0.0097    -0.0314    -0.0375    -0.1306
+  L10   relu5_1        1.87e-09   +0.0001    -0.0013    -0.0074    -0.1423
+  L00   relu1_1        6.79e-02   -0.0060    -0.0630    -0.0831    -0.0949
+  L05   relu3_2        1.15e-03   -0.0377    -0.0990    -0.1088    -0.1308
+  L06   relu3_3        1.34e-03   -0.0525    -0.1256    -0.1411    -0.1426
+  L03   relu2_2        7.85e-03   -0.0527    -0.1815    -0.1910    -0.2017
+  L02   relu2_1        7.43e-03   -0.0608    -0.1239    -0.1399    -0.1374
+  L04   relu3_1        1.36e-03   -0.0628    -0.0915    -0.0998    -0.1279
+========================================================================

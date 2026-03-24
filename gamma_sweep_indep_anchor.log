@@ -1,0 +1,95 @@
+Device : cuda
+Anchor : 200 images (/home/jnapolitano/Documents/metrique/dataset/coco_5000)
+
+Chargement métadonnées…
+  5000 images  ·  1000 séquences
+
+Extraction features SD-VAE (toutes layers en 1 passe)…
+  Chargement SD-VAE…
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+  Extraction features anchor (200 images, 17 layers)…
+    16/200 images…    32/200 images…    48/200 images…    64/200 images…    80/200 images…    96/200 images…    112/200 images…    128/200 images…    144/200 images…    160/200 images…    176/200 images…    192/200 images…    200/200 images…
+  Chargement query features…
+    L00 — cache
+    L01 — cache
+    L02 — cache
+    L03 — cache
+    L04 — cache
+    L05 — cache
+    L06 — cache
+    L07 — cache
+    L08  D_rr(200, 200)  D_rq(200, 5000)
+    L09  D_rr(200, 200)  D_rq(200, 5000)
+    L10  D_rr(200, 200)  D_rq(200, 5000)
+    L11  D_rr(200, 200)  D_rq(200, 5000)
+    L12  D_rr(200, 200)  D_rq(200, 5000)
+    L13  D_rr(200, 200)  D_rq(200, 5000)
+    L14  D_rr(200, 200)  D_rq(200, 5000)
+    L15  D_rr(200, 200)  D_rq(200, 5000)
+    L16  D_rr(200, 200)  D_rq(200, 5000)
+  Features + distances : 105.9s (1.8 min)
+
+Sweep 1 000 gammas × 17 layers (GPU)…
+  Pré-calcul structure séquences…
+  1000 séquences × 5 niveaux
+  L00 conv_in             ρ max = +0.0923
+  L01 down.0.res.0        ρ max = +0.3174
+  L02 down.0.res.1        ρ max = +0.5088
+  L03 down.0.ds           ρ max = +0.3915
+  L04 down.1.res.0        ρ max = +0.5257
+  L05 down.1.res.1        ρ max = +0.6047
+  L06 down.1.ds           ρ max = +0.5352
+  L07 down.2.res.0        ρ max = +0.5905
+  L08 down.2.res.1        ρ max = +0.5760
+  L09 down.2.ds           ρ max = +0.5513
+  L10 down.3.res.0        ρ max = +0.5708
+  L11 down.3.res.1        ρ max = +0.5802
+  L12 mid.res.0           ρ max = +0.5711
+  L13 mid.attn            ρ max = +0.5870
+  L14 mid.res.1           ρ max = +0.5921
+  L15 conv_norm_out       ρ max = +0.5878
+  L16 conv_out            ρ max = +0.3097
+  Sweep : 7.6s (0.1 min)
+
+--- Figure 1 : ρ(γ) ---
+  Saved: /home/jnapolitano/Documents/metrique/results/sweep_indep_anchor/plots/11_sdvae_indep_anchor_rho_vs_gamma.png
+
+--- Figure 2 : Heatmap ---
+  Saved: /home/jnapolitano/Documents/metrique/results/sweep_indep_anchor/plots/12_sdvae_indep_anchor_heatmap.png
+
+--- Figure 3 : p-values ---
+  Saved: /home/jnapolitano/Documents/metrique/results/sweep_indep_anchor/plots/13_sdvae_indep_anchor_pvalue.png
+
+--- Export CSV ---
+  Saved: /home/jnapolitano/Documents/metrique/results/sweep_indep_anchor/plots/sdvae_indep_anchor_gamma_sweep.csv
+
+====================================================================
+  Layer  Nom                 γ optimal     ρ max       p-value
+  --------------------------------------------------------------
+  L05   down.1.res.1         1.96e-04   +0.6047            ~0
+  L14   mid.res.1            6.50e-05   +0.5921            ~0
+  L07   down.2.res.0         6.62e-05   +0.5905            ~0
+  L15   conv_norm_out        7.39e-05   +0.5878            ~0
+  L13   mid.attn             7.13e-05   +0.5870            ~0
+  L11   down.3.res.1         7.39e-05   +0.5802            ~0
+  L08   down.2.res.1         4.10e-05   +0.5760            ~0
+  L12   mid.res.0            7.13e-05   +0.5711            ~0
+  L10   down.3.res.0         7.39e-05   +0.5708            ~0
+  L09   down.2.ds            8.26e-05   +0.5513            ~0
+  L06   down.1.ds            3.89e-04   +0.5352            ~0
+  L04   down.1.res.0         2.50e-04   +0.5257            ~0
+  L02   down.0.res.1         1.09e-03   +0.5088            ~0
+  L03   down.0.ds            1.55e-03   +0.3915     8.20e-183
+  L01   down.0.res.0         1.04e-09   +0.3174     2.17e-117
+  L16   conv_out             1.00e-01   +0.3097     1.25e-111
+  L00   conv_in              1.27e-02   +0.0923      6.14e-11
+====================================================================
+
+Temps total : 113.5s (1.9 min)
+Figures dans : /home/jnapolitano/Documents/metrique/results/sweep_indep_anchor/plots

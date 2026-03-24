@@ -1,0 +1,98 @@
+13:28:06  INFO     ================================================================================
+13:28:06  INFO     Synthetic KADID sweep — all layers, 10 gammas
+13:28:06  INFO       Backbones : ['sd_vae', 'dc_ae', 'lpips_vgg', 'vgg19', 'dinov2_vitb14']
+13:28:06  INFO       Device    : cuda
+13:28:06  INFO       125 KADID groups: rank0 DMOS=4.612, rank124 DMOS=1.299
+13:28:06  INFO       COCO: 20 refs, 1000 anchor
+13:28:06  INFO     
+13:28:06  INFO     ────────────────────────────────────────────────────────────
+13:28:06  INFO     Backbone: sd_vae  (17 layers)
+13:28:06  INFO     Loading backbone: sd_vae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+13:28:07  INFO     HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+13:28:07  INFO     HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/stabilityai/sd-vae-ft-mse/31f26fdeee1355a5c34592e401dd41e45d25a493/config.json "HTTP/1.1 200 OK"
+13:28:07  INFO     HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/31f26fdeee1355a5c34592e401dd41e45d25a493/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+13:28:08  INFO       Extracting anchor (1000 images)…
+13:28:31  INFO       Anchor saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/sd_vae_anc.npz  shapes: L0:128, L1:128, L2:128, L3:128…
+13:28:31  INFO       Extracting dist (125 groups × 20 imgs)…
+13:28:31  INFO         Group   0/124  type= 1 level=1  DMOS=4.612
+13:28:44  INFO         Group  20/124  type=17 level=3  DMOS=4.231
+13:28:56  INFO         Group  40/124  type= 6 level=3  DMOS=3.719
+13:29:09  INFO         Group  60/124  type=14 level=3  DMOS=3.084
+13:29:28  INFO         Group  80/124  type= 5 level=2  DMOS=2.545
+13:29:39  INFO         Group 100/124  type=10 level=4  DMOS=1.945
+13:30:03  INFO         Group 120/124  type=10 level=5  DMOS=1.350
+13:30:09  INFO       Dist saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/sd_vae_dist.npz
+13:30:09  INFO       Scoring 17 layers × 10 gammas…
+13:30:12  INFO       sd_vae done in 126s
+13:30:12  INFO     
+13:30:12  INFO     ────────────────────────────────────────────────────────────
+13:30:12  INFO     Backbone: dc_ae  (22 layers)
+13:30:12  INFO     Loading backbone: dc_ae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+13:30:12  INFO     HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+13:30:12  INFO     HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/d58275ea9674845e5e36cbf280987f67bee0e85c/config.json "HTTP/1.1 200 OK"
+13:30:12  INFO     HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/d58275ea9674845e5e36cbf280987f67bee0e85c/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+13:30:15  WARNING  Could not register hook on encoder.down_blocks.0.0: index 0 is out of range
+13:30:15  WARNING  Could not register hook on encoder.down_blocks.0.1: index 1 is out of range
+13:30:15  WARNING  Could not register hook on encoder.down_blocks.0.2: index 2 is out of range
+13:30:15  WARNING  Could not register hook on encoder.down_blocks.3.3: index 3 is out of range
+13:30:15  WARNING  Could not register hook on encoder.down_blocks.4.3: index 3 is out of range
+13:30:15  INFO       Extracting anchor (1000 images)…
+Traceback (most recent call last):
+  File "/home/jnapolitano/Documents/metrique/experiments/sweep_synthetic_kadid.py", line 580, in <module>
+    main()
+  File "/home/jnapolitano/Documents/metrique/experiments/sweep_synthetic_kadid.py", line 492, in main
+    anc_feats = extract_lazy(ext, anchor_paths, args.batch_size)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/experiments/sweep_synthetic_kadid.py", line 374, in extract_lazy
+    extractor._forward(tensor)
+  File "/home/jnapolitano/Documents/metrique/experiments/sweep_synthetic_kadid.py", line 360, in _forward
+    self._fe.model.encoder(tensor)
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_dc.py", line 276, in forward
+    hidden_states = down_block(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/diffusers/models/autoencoders/autoencoder_dc.py", line 58, in forward
+    hidden_states = self.norm(hidden_states.movedim(1, -1)).movedim(-1, 1)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/diffusers/models/normalization.py", line 562, in forward
+    hidden_states = hidden_states * self.weight
+                    ~~~~~~~~~~~~~~^~~~~~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 11.60 GiB of which 408.62 MiB is free. Including non-PyTorch memory, this process has 10.93 GiB memory in use. Of the allocated memory 10.10 GiB is allocated by PyTorch, and 618.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

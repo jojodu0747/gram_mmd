@@ -1,0 +1,48 @@
+13:48:50  INFO     ================================================================================
+13:48:50  INFO     Synthetic KADID sweep — all layers, 10 gammas
+13:48:50  INFO       Backbones : ['sd_vae']
+13:48:50  INFO       Device    : cuda
+13:48:50  INFO       200 groups: 25 dist_types × 8 levels (cumulative)
+13:48:50  INFO       COCO: 50 refs, 1000 anchor
+13:48:50  INFO     
+13:48:50  INFO     ────────────────────────────────────────────────────────────
+13:48:50  INFO     Backbone: sd_vae  (1 layers)
+13:48:50  INFO       Input size: 256px  →  batch_size=16
+13:48:50  INFO     Loading backbone: sd_vae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+13:48:52  INFO       Loading anchor cache: /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/sd_vae_anc.npz
+13:48:52  INFO       Extracting dist (200 groups × 50 imgs)…
+13:48:52  INFO         Group   0/200  +type= 1 level=1  (total ops=1)
+13:49:20  INFO         Group  20/200  +type=21 level=1  (total ops=21)
+13:49:48  INFO         Group  40/200  +type=16 level=2  (total ops=41)
+13:50:18  INFO         Group  60/200  +type=11 level=3  (total ops=61)
+13:50:48  INFO         Group  80/200  +type= 6 level=4  (total ops=81)
+13:51:23  INFO         Group 100/200  +type= 1 level=5  (total ops=101)
+13:51:56  INFO         Group 120/200  +type=21 level=5  (total ops=121)
+13:52:40  INFO         Group 140/200  +type=16 level=6  (total ops=141)
+13:53:52  INFO         Group 160/200  +type=11 level=7  (total ops=161)
+13:55:46  INFO         Group 180/200  +type= 6 level=8  (total ops=181)
+13:59:00  INFO       Dist saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/sd_vae_dist.npz
+13:59:00  INFO       Scoring 1 layers × 10 gammas…
+13:59:01  INFO       sd_vae done in 611s
+13:59:01  INFO     
+CSV saved: /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/summary_20260316_134850.csv  (10 rows)
+13:59:01  INFO     
+Top-10 by |Spearman ρ|:
+13:59:01  INFO       Backbone           Layer     γ×        ρ        τ    mono
+13:59:01  INFO       sd_vae                11   0.50  +0.9017  +0.7605   55.3%
+13:59:01  INFO       sd_vae                11   1.00  +0.8839  +0.7312   55.8%
+13:59:01  INFO       sd_vae                11   0.30  +0.8781  +0.7459   58.8%
+13:59:01  INFO       sd_vae                11   2.00  +0.8761  +0.7195   55.8%
+13:59:01  INFO       sd_vae                11   0.01  +0.8711  +0.7429   60.8%
+13:59:01  INFO       sd_vae                11   5.00  +0.8711  +0.7133   55.8%
+13:59:01  INFO       sd_vae                11  10.00  +0.8697  +0.7117   55.8%
+13:59:01  INFO       sd_vae                11  30.00  +0.8695  +0.7114   55.8%
+13:59:01  INFO       sd_vae                11   0.03  +0.8567  +0.7255   61.8%
+13:59:01  INFO       sd_vae                11   0.10  +0.8457  +0.7090   61.3%

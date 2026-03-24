@@ -1,0 +1,120 @@
+13:33:59  INFO     ================================================================================
+13:33:59  INFO     Synthetic KADID sweep — all layers, 10 gammas
+13:33:59  INFO       Backbones : ['dc_ae', 'lpips_vgg', 'vgg19', 'dinov2_vitb14']
+13:33:59  INFO       Device    : cuda
+13:33:59  INFO       125 KADID groups: rank0 DMOS=4.612, rank124 DMOS=1.299
+13:33:59  INFO       COCO: 20 refs, 1000 anchor
+13:33:59  INFO     
+13:33:59  INFO     ────────────────────────────────────────────────────────────
+13:33:59  INFO     Backbone: dc_ae  (22 layers)
+13:33:59  INFO       Input size: 512px  →  batch_size=4
+13:33:59  INFO     Loading backbone: dc_ae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+13:34:01  INFO     HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+13:34:01  INFO     HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/d58275ea9674845e5e36cbf280987f67bee0e85c/config.json "HTTP/1.1 200 OK"
+13:34:01  INFO     HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/d58275ea9674845e5e36cbf280987f67bee0e85c/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+13:34:02  WARNING  Could not register hook on encoder.down_blocks.0.0: index 0 is out of range
+13:34:02  WARNING  Could not register hook on encoder.down_blocks.0.1: index 1 is out of range
+13:34:02  WARNING  Could not register hook on encoder.down_blocks.0.2: index 2 is out of range
+13:34:02  WARNING  Could not register hook on encoder.down_blocks.3.3: index 3 is out of range
+13:34:02  WARNING  Could not register hook on encoder.down_blocks.4.3: index 3 is out of range
+13:34:02  INFO       Extracting anchor (1000 images)…
+13:36:12  INFO       Anchor saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/dc_ae_anc.npz  shapes: L0:256, L4:256, L5:256, L6:256…
+13:36:12  INFO       Extracting dist (125 groups × 20 imgs)…
+13:36:12  INFO         Group   0/124  type= 1 level=1  DMOS=4.612
+13:37:08  INFO         Group  20/124  type=17 level=3  DMOS=4.231
+13:38:03  INFO         Group  40/124  type= 6 level=3  DMOS=3.719
+13:38:58  INFO         Group  60/124  type=14 level=3  DMOS=3.084
+13:39:59  INFO         Group  80/124  type= 5 level=2  DMOS=2.545
+13:40:52  INFO         Group 100/124  type=10 level=4  DMOS=1.945
+13:41:57  INFO         Group 120/124  type=10 level=5  DMOS=1.350
+13:42:15  INFO       Dist saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/dc_ae_dist.npz
+13:42:15  INFO       Scoring 22 layers × 10 gammas…
+13:42:18  INFO       dc_ae done in 499s
+13:42:18  INFO     
+13:42:18  INFO     ────────────────────────────────────────────────────────────
+13:42:18  INFO     Backbone: lpips_vgg  (13 layers)
+13:42:18  INFO       Input size: 224px  →  batch_size=16
+13:42:18  INFO     Loading backbone: lpips_vgg
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+13:42:20  INFO       Extracting anchor (1000 images)…
+13:42:25  INFO       Anchor saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/lpips_vgg_anc.npz  shapes: L0:64, L1:64, L2:128, L3:128…
+13:42:25  INFO       Extracting dist (125 groups × 20 imgs)…
+13:42:25  INFO         Group   0/124  type= 1 level=1  DMOS=4.612
+13:42:30  INFO         Group  20/124  type=17 level=3  DMOS=4.231
+13:42:35  INFO         Group  40/124  type= 6 level=3  DMOS=3.719
+13:42:41  INFO         Group  60/124  type=14 level=3  DMOS=3.084
+13:42:53  INFO         Group  80/124  type= 5 level=2  DMOS=2.545
+13:42:57  INFO         Group 100/124  type=10 level=4  DMOS=1.945
+13:43:12  INFO         Group 120/124  type=10 level=5  DMOS=1.350
+13:43:16  INFO       Dist saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/lpips_vgg_dist.npz
+13:43:16  INFO       Scoring 13 layers × 10 gammas…
+13:43:18  INFO       lpips_vgg done in 60s
+13:43:18  INFO     
+13:43:18  INFO     ────────────────────────────────────────────────────────────
+13:43:18  INFO     Backbone: vgg19  (18 layers)
+13:43:18  INFO       Input size: 224px  →  batch_size=16
+13:43:18  INFO     Loading backbone: vgg19
+13:43:20  INFO       Extracting anchor (1000 images)…
+13:43:26  INFO       Anchor saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/vgg19_anc.npz  shapes: L0:64, L1:64, L2:128, L3:128…
+13:43:26  INFO       Extracting dist (125 groups × 20 imgs)…
+13:43:26  INFO         Group   0/124  type= 1 level=1  DMOS=4.612
+13:43:32  INFO         Group  20/124  type=17 level=3  DMOS=4.231
+13:43:37  INFO         Group  40/124  type= 6 level=3  DMOS=3.719
+13:43:43  INFO         Group  60/124  type=14 level=3  DMOS=3.084
+13:43:55  INFO         Group  80/124  type= 5 level=2  DMOS=2.545
+13:43:58  INFO         Group 100/124  type=10 level=4  DMOS=1.945
+13:44:14  INFO         Group 120/124  type=10 level=5  DMOS=1.350
+13:44:20  INFO       Dist saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/vgg19_dist.npz
+13:44:20  INFO       Scoring 18 layers × 10 gammas…
+13:44:23  INFO       vgg19 done in 65s
+13:44:23  INFO     
+13:44:23  INFO     ────────────────────────────────────────────────────────────
+13:44:23  INFO     Backbone: dinov2_vitb14  (14 layers)
+13:44:23  INFO       Input size: 518px  →  batch_size=4
+13:44:23  INFO     Loading backbone: dinov2_vitb14
+Using cache found in /home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main
+/home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+13:44:23  INFO     using MLP layer as FFN
+13:44:24  INFO       Extracting anchor (1000 images)…
+13:45:04  INFO       Anchor saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/dinov2_vitb14_anc.npz  shapes: L0:768, L1:768, L2:768, L3:768…
+13:45:04  INFO       Extracting dist (125 groups × 20 imgs)…
+13:45:04  INFO         Group   0/124  type= 1 level=1  DMOS=4.612
+13:45:22  INFO         Group  20/124  type=17 level=3  DMOS=4.231
+13:45:40  INFO         Group  40/124  type= 6 level=3  DMOS=3.719
+13:46:00  INFO         Group  60/124  type=14 level=3  DMOS=3.084
+13:46:26  INFO         Group  80/124  type= 5 level=2  DMOS=2.545
+13:46:45  INFO         Group 100/124  type=10 level=4  DMOS=1.945
+13:47:14  INFO         Group 120/124  type=10 level=5  DMOS=1.350
+13:47:24  INFO       Dist saved → /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/cache/dinov2_vitb14_dist.npz
+13:47:24  INFO       Scoring 14 layers × 10 gammas…
+13:47:26  INFO       dinov2_vitb14 done in 183s
+13:47:26  INFO     
+CSV saved: /home/jnapolitano/Documents/metrique/results/synthetic_kadid_sweep/summary_20260313_133359.csv  (620 rows)
+13:47:26  INFO     
+Top-10 by |Spearman ρ|:
+13:47:26  INFO       Backbone           Layer     γ×        ρ        τ    mono
+13:47:26  INFO       lpips_vgg              5  30.00  +0.4797  +0.3435   50.8%
+13:47:26  INFO       vgg19                  4   1.00  +0.4794  +0.3448   48.4%
+13:47:26  INFO       lpips_vgg              5  10.00  +0.4792  +0.3435   50.8%
+13:47:26  INFO       vgg19                  5  30.00  +0.4784  +0.3437   50.0%
+13:47:26  INFO       lpips_vgg              5   5.00  +0.4780  +0.3430   50.0%
+13:47:26  INFO       vgg19                  4   2.00  +0.4773  +0.3445   50.8%
+13:47:26  INFO       vgg19                  5  10.00  +0.4773  +0.3426   50.0%
+13:47:26  INFO       vgg19                  5   5.00  +0.4769  +0.3419   50.0%
+13:47:26  INFO       vgg19                  4   5.00  +0.4763  +0.3435   50.0%
+13:47:26  INFO       vgg19                  4  10.00  +0.4758  +0.3430   50.0%

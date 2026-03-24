@@ -50,43 +50,6 @@ CONFIG = {
     # ========================================================================
     "backbone": "sd_vae",
 
-    # Experiment configurations: 4 backbones x 6 layers = 24 configs
-    "experiment_configs": [
-        # SD VAE (17 layers, 0-16)
-        {"backbone": "sd_vae", "layer": 0},
-        {"backbone": "sd_vae", "layer": 3},
-        {"backbone": "sd_vae", "layer": 6},
-        {"backbone": "sd_vae", "layer": 9},
-        {"backbone": "sd_vae", "layer": 12},
-        {"backbone": "sd_vae", "layer": 16},
-        # DinoV2 ViT-B/14 (14 layers, 0-13)
-        {"backbone": "dinov2_vitb14", "layer": 0},
-        {"backbone": "dinov2_vitb14", "layer": 2},
-        {"backbone": "dinov2_vitb14", "layer": 5},
-        {"backbone": "dinov2_vitb14", "layer": 8},
-        {"backbone": "dinov2_vitb14", "layer": 11},
-        {"backbone": "dinov2_vitb14", "layer": 13},
-        # VGG19 (18 layers, 0-17)
-        {"backbone": "vgg19", "layer": 0},
-        {"backbone": "vgg19", "layer": 3},
-        {"backbone": "vgg19", "layer": 7},
-        {"backbone": "vgg19", "layer": 11},
-        {"backbone": "vgg19", "layer": 15},
-        {"backbone": "vgg19", "layer": 17},
-        # LPIPS VGG (13 layers, 0-12)
-        {"backbone": "lpips_vgg", "layer": 0},
-        {"backbone": "lpips_vgg", "layer": 3},
-        {"backbone": "lpips_vgg", "layer": 7},
-        {"backbone": "lpips_vgg", "layer": 11},
-        {"backbone": "lpips_vgg", "layer": 13},
-        {"backbone": "lpips_vgg", "layer": 15},
-    ],
-
-    # Legacy layer configs
-    "layer_configs": [
-        {"name": "single_layer_9", "layers": [9]},
-    ],
-
     # Gram matrix computation
     "feature_transforms": [
         {
@@ -151,16 +114,33 @@ BACKBONE_CONFIGS = {
         "input_size": 224,
         "normalize_mean": [0.485, 0.456, 0.406],
         "normalize_std": [0.229, 0.224, 0.225],
-        "total_layers": 10,
-        "extractable_layers": {
-            1: "conv1", 2: "bn1", 3: "relu", 4: "maxpool",
-            5: "layer1", 6: "layer2", 7: "layer3", 8: "layer4",
-            9: "avgpool", 10: "fc",
-        },
+        "total_layers": 25,
         "layer_names": {
-            7: "layer3", 8: "layer4", 9: "avgpool", 10: "fc",
-            11: "layer4.0", 12: "layer4.1", 13: "layer4.2",
-            14: "layer3.5", 15: "layer3.4",
+            0: "conv1",
+            1: "bn1",
+            2: "maxpool",
+            3: "layer1",
+            4: "layer1.0",
+            5: "layer1.1",
+            6: "layer1.2",
+            7: "layer2",
+            8: "layer2.0",
+            9: "layer2.1",
+            10: "layer2.2",
+            11: "layer2.3",
+            12: "layer3",
+            13: "layer3.0",
+            14: "layer3.1",
+            15: "layer3.2",
+            16: "layer3.3",
+            17: "layer3.4",
+            18: "layer3.5",
+            19: "layer4",
+            20: "layer4.0",
+            21: "layer4.1",
+            22: "layer4.2",
+            23: "avgpool",
+            24: "fc",
         },
     },
     "vgg19": {
@@ -262,6 +242,77 @@ BACKBONE_CONFIGS = {
             12: "vision_model.encoder.layers.11",
         },
     },
+    "flux_vae": {
+        "model_name": "flux_vae",
+        "weights": "diffusers/FLUX.1-vae",
+        "input_size": 512,
+        "normalize_mean": [0.5, 0.5, 0.5],
+        "normalize_std": [0.5, 0.5, 0.5],
+        "total_layers": 17,
+        "layer_names": {
+            0: "encoder.conv_in",
+            1: "encoder.down_blocks.0.resnets.0",
+            2: "encoder.down_blocks.0.resnets.1",
+            3: "encoder.down_blocks.0.downsamplers.0",
+            4: "encoder.down_blocks.1.resnets.0",
+            5: "encoder.down_blocks.1.resnets.1",
+            6: "encoder.down_blocks.1.downsamplers.0",
+            7: "encoder.down_blocks.2.resnets.0",
+            8: "encoder.down_blocks.2.resnets.1",
+            9: "encoder.down_blocks.2.downsamplers.0",
+            10: "encoder.down_blocks.3.resnets.0",
+            11: "encoder.down_blocks.3.resnets.1",
+            12: "encoder.mid_block.resnets.0",
+            13: "encoder.mid_block.attentions.0",
+            14: "encoder.mid_block.resnets.1",
+            15: "encoder.conv_norm_out",
+            16: "encoder.conv_out",
+        },
+    },
+    "dc_ae": {
+        "model_name": "dc_ae",
+        "weights": "mit-han-lab/dc-ae-f64c128-in-1.0-diffusers",
+        "input_size": 512,
+        "normalize_mean": [0.5, 0.5, 0.5],
+        "normalize_std": [0.5, 0.5, 0.5],
+        "total_layers": 24,
+        # 6 encoder stages: block_out_channels (128,256,512,512,1024,1024)
+        # layers_per_block (2,2,2,3,3,3) — each stage is nn.Sequential
+        # Stages 0-2: [ResBlock, ResBlock, DCDownBlock2d]
+        # Stages 3-4: [ResBlock, ResBlock, ResBlock, DCDownBlock2d]
+        # Stage 5:    [ResBlock, ResBlock, ResBlock] (no downsample)
+        "layer_names": {
+            0: "encoder.conv_in",
+            # Stage 0 (128ch)
+            1: "encoder.down_blocks.0.0",   # ResBlock
+            2: "encoder.down_blocks.0.1",   # ResBlock
+            3: "encoder.down_blocks.0.2",   # DCDownBlock2d
+            # Stage 1 (256ch)
+            4: "encoder.down_blocks.1.0",   # ResBlock
+            5: "encoder.down_blocks.1.1",   # ResBlock
+            6: "encoder.down_blocks.1.2",   # DCDownBlock2d
+            # Stage 2 (512ch)
+            7: "encoder.down_blocks.2.0",   # ResBlock
+            8: "encoder.down_blocks.2.1",   # ResBlock
+            9: "encoder.down_blocks.2.2",   # DCDownBlock2d
+            # Stage 3 (512ch)
+            10: "encoder.down_blocks.3.0",  # ResBlock
+            11: "encoder.down_blocks.3.1",  # ResBlock
+            12: "encoder.down_blocks.3.2",  # ResBlock
+            13: "encoder.down_blocks.3.3",  # DCDownBlock2d
+            # Stage 4 (1024ch)
+            14: "encoder.down_blocks.4.0",  # ResBlock
+            15: "encoder.down_blocks.4.1",  # ResBlock
+            16: "encoder.down_blocks.4.2",  # ResBlock
+            17: "encoder.down_blocks.4.3",  # DCDownBlock2d
+            # Stage 5 (1024ch, no downsample)
+            18: "encoder.down_blocks.5.0",  # ResBlock
+            19: "encoder.down_blocks.5.1",  # ResBlock
+            20: "encoder.down_blocks.5.2",  # ResBlock
+            # Output
+            21: "encoder.conv_out",
+        },
+    },
 }
 
 
@@ -270,32 +321,43 @@ BACKBONE_CONFIGS = {
 # ============================================================================
 ENABLED_LAYERS = {
     "sd_vae": {
-        0: True, 1: True, 2: False, 3: True, 4: False, 5: True,
-        6: False, 7: True, 8: True, 9: False, 10: True, 11: True,
-        12: False, 13: True, 14: False, 15: False, 16: False,
+        0: False, 1: False, 2: False, 3: False, 4: False, 5: False,
+        6: False, 7: False, 8: False, 9: False, 10: False, 11: False,
+        12: False, 13: False, 14: False, 15: False, 16: False,
     },
     "dinov2_vitb14": {
-        0: True, 1: True, 2: True, 3: True, 4: True, 5: True,
-        6: True, 7: True, 8: True, 9: True, 10: True, 11: True,
-        12: True, 13: True,
+        0: False, 1: False, 2: False, 3: False, 4: False, 5: False,
+        6: False, 7: False, 8: False, 9: False, 10: False, 11: False,
+        12: False, 13: False,
     },
     "vgg19": {
-        0: True, 1: True, 2: True, 3: True, 4: True, 5: True,
-        6: True, 7: True, 8: True, 9: True, 10: True, 11: True,
-        12: True, 13: True, 14: True, 15: True, 16: True, 17: True,
+        0: False, 1: False, 2: False, 3: False, 4: False, 5: False,
+        6: False, 7: False, 8: False, 9: False, 10: False, 11: False,
+        12: False, 13: False, 14: False, 15: False, 16: False, 17: False,
     },
     "lpips_vgg": {
-        0: True, 1: True, 2: True, 3: True, 4: True, 5: True,
-        6: True, 7: True, 8: True, 9: True, 10: True, 11: True,
-        12: True,
+        0: False, 1: False, 2: False, 3: False, 4: False, 5: False,
+        6: False, 7: False, 8: False, 9: False, 10: False, 11: False,
+        12: False,
     },
     "resnet50": {
-        7: True, 8: True, 12: True, 13: True, 14: True, 15: True,
+        7: False, 8: False, 12: False, 13: False, 14: False, 15: False,
     },
     "clip_vit_base": {
-        0: True, 1: True, 2: True, 3: True, 4: True, 5: True,
-        6: True, 7: True, 8: True, 9: True, 10: True, 11: True,
-        12: True,
+        0: False, 1: False, 2: False, 3: False, 4: False, 5: False,
+        6: False, 7: False, 8: False, 9: False, 10: False, 11: False,
+        12: False,
+    },
+    "flux_vae": {
+        0: False, 1: False, 2: False, 3: False, 4: False, 5: False,
+        6: False, 7: False, 8: False, 9: False, 10: False, 11: False,
+        12: False, 13: False, 14: False, 15: False, 16: False,
+    },
+    "dc_ae": {
+        0: False, 1: False, 2: False, 3: False, 4: False, 5: False,
+        6: False, 7: False, 8: False, 9: False, 10: False, 11: False,
+        12: False, 13: False, 14: False, 15: False, 16: False, 17: False,
+        18: False, 19: False, 20: False, 21: False,
     },
 }
 

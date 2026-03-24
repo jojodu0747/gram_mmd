@@ -1,0 +1,51 @@
+2026-03-12 15:28:01,650 INFO: ============================================================
+2026-03-12 15:28:01,650 INFO: RAISE Point-vs-Distribution  —  lpips_vgg L5
+2026-03-12 15:28:01,650 INFO:   Gamma      : 10× median heuristic
+2026-03-12 15:28:01,650 INFO:   N anchor   : 1000 COCO (seed=42)
+2026-03-12 15:28:01,650 INFO:   N queries  : 480 RAISE IA images
+2026-03-12 15:28:01,650 INFO: ============================================================
+2026-03-12 15:28:01,658 INFO: Ancrage COCO : 1000 images (seed=42)
+2026-03-12 15:28:01,661 INFO: RAISE images IA : 480  MOS [10.38 … 87.81]
+2026-03-12 15:28:01,750 INFO: Loading backbone: lpips_vgg
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+2026-03-12 15:28:03,257 INFO: 
+Extraction ancrage (1000 images COCO)…
+2026-03-12 15:28:03,502 INFO: Extracting features: batch 1/32
+2026-03-12 15:28:04,512 INFO: Extracting features: batch 11/32
+2026-03-12 15:28:05,208 INFO: Extracting features: batch 21/32
+2026-03-12 15:28:05,890 INFO: Extracting features: batch 31/32
+2026-03-12 15:28:06,039 INFO: Extracted raw features: shape = (1000, 32896)
+2026-03-12 15:28:06,412 INFO: Fitted scaler on Gram features: mean=2.87e+00, std=1.90e+00
+2026-03-12 15:28:06,412 INFO: Final feature shape: (1000, 32896)
+2026-03-12 15:28:06,433 INFO:   anchor_feat : (1000, 32896)
+2026-03-12 15:28:06,434 INFO: Extraction queries (480 images RAISE)…
+2026-03-12 15:28:10,455 INFO: Extracting features: batch 1/15
+2026-03-12 15:28:11,141 INFO: Extracting features: batch 11/15
+2026-03-12 15:28:11,509 INFO: Extracted raw features: shape = (480, 32896)
+2026-03-12 15:28:11,556 INFO: Final feature shape: (480, 32896)
+2026-03-12 15:28:11,601 INFO:   query_feat  : (480, 32896)
+2026-03-12 15:28:11,946 INFO: 
+Gamma médiane = 9.0220e-06
+2026-03-12 15:28:11,946 INFO: Gamma utilisé = 10× médiane = 9.0220e-05
+2026-03-12 15:28:11,946 INFO: 
+Calcul scores point-vs-distribution…
+2026-03-12 15:28:12,411 INFO:   scores : min=0.90824  max=1.02640  mean=1.00465
+2026-03-12 15:28:12,423 INFO: 
+  Spearman ρ = -0.1089  (p=1.704e-02)
+2026-03-12 15:28:12,423 INFO:   Pearson  r = -0.1418  (p=1.844e-03)
+2026-03-12 15:28:12,426 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/raise_lpips_point/raise_lpips_point_scores_20260312_152801.csv
+2026-03-12 15:28:12,426 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/raise_lpips_point/raise_lpips_point_summary_20260312_152801.csv
+2026-03-12 15:28:12,426 INFO: 
+Figures…
+2026-03-12 15:28:12,570 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/raise_lpips_point/plots/01_scatter_score_vs_mos.png
+2026-03-12 15:28:12,728 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/raise_lpips_point/plots/02_sorted_scores.png
+2026-03-12 15:28:12,728 INFO: 
+============================================================
+2026-03-12 15:28:12,728 INFO:   lpips_vgg L5  γ=10×med=9.022e-05
+2026-03-12 15:28:12,728 INFO:   Spearman ρ = -0.1089  (p=1.704e-02)
+2026-03-12 15:28:12,728 INFO:   Pearson  r = -0.1418  (p=1.844e-03)
+2026-03-12 15:28:12,728 INFO: Résultats dans : /home/jnapolitano/Documents/metrique/results/raise_lpips_point
+2026-03-12 15:28:12,728 INFO: ============================================================

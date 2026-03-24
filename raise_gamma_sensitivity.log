@@ -1,0 +1,85 @@
+2026-03-12 10:27:12,184 INFO: =================================================================
+2026-03-12 10:27:12,184 INFO: RAISE Gamma Sensitivity — SD-VAE L11
+2026-03-12 10:27:12,184 INFO:   Groupes   : 24 × 20 = 480 images
+2026-03-12 10:27:12,184 INFO:   Ancrage   : 1000 COCO (seed=42)
+2026-03-12 10:27:12,184 INFO:   Gammas    : median, mean, 10×median, 50×median, 100×median
+2026-03-12 10:27:12,184 INFO:   Device    : cuda
+2026-03-12 10:27:12,184 INFO: =================================================================
+2026-03-12 10:27:12,192 INFO: Ancrage COCO : 1000 images (seed=42)
+2026-03-12 10:27:12,196 INFO: Images IA RAISE : 480  MOS [10.38 … 87.81]
+2026-03-12 10:27:12,196 INFO: Loading backbone: sd_vae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+2026-03-12 10:27:13,821 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-12 10:27:13,834 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/stabilityai/sd-vae-ft-mse/31f26fdeee1355a5c34592e401dd41e45d25a493/config.json "HTTP/1.1 200 OK"
+2026-03-12 10:27:13,955 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/31f26fdeee1355a5c34592e401dd41e45d25a493/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-12 10:27:14,627 INFO: 
+Extraction ancrage (1000 images)...
+2026-03-12 10:27:14,825 INFO: Extracting features: batch 1/63
+2026-03-12 10:27:18,249 INFO: Extracting features: batch 11/63
+2026-03-12 10:27:21,354 INFO: Extracting features: batch 21/63
+2026-03-12 10:27:24,468 INFO: Extracting features: batch 31/63
+2026-03-12 10:27:27,576 INFO: Extracting features: batch 41/63
+2026-03-12 10:27:30,694 INFO: Extracting features: batch 51/63
+2026-03-12 10:27:33,809 INFO: Extracting features: batch 61/63
+2026-03-12 10:27:34,776 INFO: Extracted raw features: shape = (1000, 131328)
+2026-03-12 10:27:36,148 INFO: Fitted scaler on Gram features: mean=2.46e+01, std=1.82e+02
+2026-03-12 10:27:36,148 INFO: Final feature shape: (1000, 131328)
+2026-03-12 10:27:36,173 INFO:   anchor_feat : (1000, 131328)
+2026-03-12 10:27:36,174 INFO: 
+Extraction RAISE (480 images)...
+2026-03-12 10:27:39,986 INFO: Extracting features: batch 1/30
+2026-03-12 10:27:43,104 INFO: Extracting features: batch 11/30
+2026-03-12 10:27:46,218 INFO: Extracting features: batch 21/30
+2026-03-12 10:27:49,441 INFO: Extracted raw features: shape = (480, 131328)
+2026-03-12 10:27:49,619 INFO: Final feature shape: (480, 131328)
+2026-03-12 10:27:49,673 INFO:   raise_feat : (480, 131328)
+2026-03-12 10:27:49,673 INFO: 
+Calcul des gammas heuristiques (ancrage)...
+2026-03-12 10:27:50,905 INFO:   median(d²) = 2.3245e+05  → γ_median  = 2.1510e-06
+2026-03-12 10:27:50,905 INFO:   mean(d²)   = 2.6292e+05  → γ_mean    = 1.9017e-06
+2026-03-12 10:27:50,906 INFO:     median         : γ = 2.1510e-06
+2026-03-12 10:27:50,906 INFO:     mean           : γ = 1.9017e-06
+2026-03-12 10:27:50,906 INFO:     10x_median     : γ = 2.1510e-05
+2026-03-12 10:27:50,906 INFO:     50x_median     : γ = 1.0755e-04
+2026-03-12 10:27:50,906 INFO:     100x_median    : γ = 2.1510e-04
+2026-03-12 10:27:51,043 INFO: 
+── γ = 2.1510e-06  (median) ──
+2026-03-12 10:27:51,045 INFO:   term1_rr = 0.588977
+2026-03-12 10:28:02,525 INFO:   SD_VAE_L11_median                                   ρ=-0.7304  r=-0.5344  p_ρ=5.065e-05  p_r=7.140e-03
+2026-03-12 10:28:02,525 INFO: 
+── γ = 1.9017e-06  (mean) ──
+2026-03-12 10:28:02,527 INFO:   term1_rr = 0.624264
+2026-03-12 10:28:13,909 INFO:   SD_VAE_L11_mean                                     ρ=-0.7235  r=-0.5267  p_ρ=6.466e-05  p_r=8.190e-03
+2026-03-12 10:28:13,910 INFO: 
+── γ = 2.1510e-05  (10x_median) ──
+2026-03-12 10:28:13,911 INFO:   term1_rr = 0.019844
+2026-03-12 10:28:25,549 INFO:   SD_VAE_L11_10x_median                               ρ=-0.7948  r=-0.6791  p_ρ=3.500e-06  p_r=2.633e-04
+2026-03-12 10:28:25,549 INFO: 
+── γ = 1.0755e-04  (50x_median) ──
+2026-03-12 10:28:25,551 INFO:   term1_rr = 0.000006
+2026-03-12 10:28:37,602 INFO:   SD_VAE_L11_50x_median                               ρ=+0.0217  r=-0.0850  p_ρ=9.197e-01  p_r=6.930e-01
+2026-03-12 10:28:37,603 INFO: 
+── γ = 2.1510e-04  (100x_median) ──
+2026-03-12 10:28:37,607 INFO:   term1_rr = 0.000000
+2026-03-12 10:28:50,387 INFO:   SD_VAE_L11_100x_median                              ρ=+0.1087  r=+0.2022  p_ρ=6.132e-01  p_r=3.434e-01
+2026-03-12 10:28:50,388 INFO: 
+=================================================================
+2026-03-12 10:28:50,388 INFO: RÉSUMÉ FINAL  [24 groupes × 20 images]
+2026-03-12 10:28:50,388 INFO: Gamma                   γ val         ρ        −ρ         p_ρ
+2026-03-12 10:28:50,388 INFO: -----------------------------------------------------------------
+2026-03-12 10:28:50,388 INFO:   10x_median         2.1510e-05   -0.7948   +0.7948  3.500e-06 ✱
+2026-03-12 10:28:50,388 INFO:   median             2.1510e-06   -0.7304   +0.7304  5.065e-05 ✱
+2026-03-12 10:28:50,388 INFO:   mean               1.9017e-06   -0.7235   +0.7235  6.466e-05 ✱
+2026-03-12 10:28:50,388 INFO:   50x_median         1.0755e-04   +0.0217   -0.0217  9.197e-01
+2026-03-12 10:28:50,388 INFO:   100x_median        2.1510e-04   +0.1087   -0.1087  6.132e-01
+2026-03-12 10:28:50,388 INFO: =================================================================
+2026-03-12 10:28:50,389 INFO:   Sauvegardé : /home/jnapolitano/Documents/metrique/results/raise_gamma_sensitivity/gamma_sensitivity_sdvae_L11_24x20_detailed_20260312_102712.csv
+2026-03-12 10:28:50,389 INFO:   Sauvegardé : /home/jnapolitano/Documents/metrique/results/raise_gamma_sensitivity/gamma_sensitivity_sdvae_L11_24x20_summary_20260312_102712.csv
+2026-03-12 10:28:50,389 INFO: 
+Résultats dans : /home/jnapolitano/Documents/metrique/results/raise_gamma_sensitivity

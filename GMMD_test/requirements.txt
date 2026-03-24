@@ -1,0 +1,8 @@
+torch
+torchvision
+diffusers
+scikit-learn
+pillow
+numpy
+lpips
+transformers

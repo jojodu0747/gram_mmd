@@ -73,12 +73,18 @@ class FeatureExtractor:
     def __init__(
         self,
         backbone: str = None,
+        layer: int = None,
         layer_config: Dict = None,
         transform_config: Dict = None,
         device: str = None,
     ):
         self.backbone_name = backbone or CONFIG["backbone"]
-        self.layer_config = layer_config or CONFIG["layer_configs"][0]
+        if layer is not None:
+            self.layer_config = {"name": f"layer_{layer}", "layers": [layer]}
+        elif layer_config is not None:
+            self.layer_config = layer_config
+        else:
+            raise ValueError("Either 'layer' (int) or 'layer_config' (dict) must be provided")
         self.transform_config = transform_config or CONFIG["feature_transforms"][0]
 
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
@@ -116,6 +122,18 @@ class FeatureExtractor:
         elif self.backbone_name == "sd_vae":
             from diffusers import AutoencoderKL
             self.model = AutoencoderKL.from_pretrained(
+                self.backbone_config["weights"]
+            )
+
+        elif self.backbone_name == "flux_vae":
+            from diffusers import AutoencoderKL
+            self.model = AutoencoderKL.from_pretrained(
+                self.backbone_config["weights"],
+            )
+
+        elif self.backbone_name == "dc_ae":
+            from diffusers import AutoencoderDC
+            self.model = AutoencoderDC.from_pretrained(
                 self.backbone_config["weights"]
             )
 
@@ -333,7 +351,7 @@ class FeatureExtractor:
             hook.clear()
 
         with torch.no_grad():
-            if self.backbone_name == "sd_vae":
+            if self.backbone_name in ("sd_vae", "flux_vae", "dc_ae"):
                 _ = self.model.encoder(images)
             elif self.backbone_name == "lpips_vgg":
                 scaled = self.model.scaling_layer(images)
@@ -481,7 +499,7 @@ class FeatureExtractor:
             hook.clear()
 
         with torch.no_grad():
-            if self.backbone_name == "sd_vae":
+            if self.backbone_name in ("sd_vae", "flux_vae", "dc_ae"):
                 _ = self.model.encoder(images)
             elif self.backbone_name == "lpips_vgg":
                 scaled = self.model.scaling_layer(images)

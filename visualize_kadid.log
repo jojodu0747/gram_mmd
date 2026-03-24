@@ -1,0 +1,27 @@
+2026-03-05 15:42:54,506 INFO: ======================================================================
+2026-03-05 15:42:54,506 INFO: Visualisation scatter MMD² — KADID-10k
+2026-03-05 15:42:54,506 INFO:   Gamma   = 2.80e-05
+2026-03-05 15:42:54,506 INFO:   Device  = cuda
+2026-03-05 15:42:54,506 INFO:   Cache   = True
+2026-03-05 15:42:54,506 INFO: ======================================================================
+2026-03-05 15:42:54,523 INFO: KADID : 10125 images dégradées
+2026-03-05 15:42:54,574 INFO: 
+── SD-VAE l7 ──
+2026-03-05 15:42:54,574 INFO:   Cache trouvé : /home/jnapolitano/Documents/metrique/results/kadid_scatter/cache/SD-VAE_l7.npy
+2026-03-05 15:42:54,581 INFO:   ρ=+0.4814  mono=72.3%
+2026-03-05 15:42:54,581 INFO: 
+── DC-AE l10 ──
+2026-03-05 15:42:54,581 INFO:   Cache trouvé : /home/jnapolitano/Documents/metrique/results/kadid_scatter/cache/DC-AE_l10.npy
+2026-03-05 15:42:54,586 INFO:   ρ=+0.4792  mono=67.9%
+2026-03-05 15:42:54,586 INFO: 
+── DINOv2-B l5 ──
+2026-03-05 15:42:54,586 INFO:   Cache trouvé : /home/jnapolitano/Documents/metrique/results/kadid_scatter/cache/DINOv2-B_l5.npy
+2026-03-05 15:42:54,592 INFO:   ρ=+0.5359  mono=71.7%
+2026-03-05 15:42:54,592 INFO: 
+── CMMD (CLIP ViT-L/14@336) ──
+2026-03-05 15:42:54,592 INFO:   Cache trouvé : /home/jnapolitano/Documents/metrique/results/kadid_scatter/cache/CMMD.npy
+2026-03-05 15:42:54,597 INFO:   ρ=+0.3023  mono=34.4%
+2026-03-05 15:42:55,095 INFO:   Violin plot sauvegardé : /home/jnapolitano/Documents/metrique/results/kadid_scatter/violin_par_niveau_20260305_154254.png
+2026-03-05 15:42:55,759 INFO:   Scatter dmos sauvegardé : /home/jnapolitano/Documents/metrique/results/kadid_scatter/scatter_dmos_20260305_154254.png
+2026-03-05 15:42:55,759 INFO: 
+Tous les résultats dans : /home/jnapolitano/Documents/metrique/results/kadid_scatter
