@@ -1,0 +1,80 @@
+2026-03-04 11:17:57,987 INFO: Device: cuda
+2026-03-04 11:17:58,006 INFO: KADID CSV: 10125 images
+2026-03-04 11:17:58,058 INFO: 81 références  |  10125 images d'éval
+2026-03-04 11:17:58,058 INFO: 
+================================================================================
+2026-03-04 11:17:58,058 INFO: BACKBONE: sd_vae  (SD-VAE)  batch=16
+2026-03-04 11:17:58,058 INFO: ================================================================================
+2026-03-04 11:17:58,058 INFO:   Loading sd_vae ...
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+2026-03-04 11:17:59,377 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-04 11:17:59,389 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/stabilityai/sd-vae-ft-mse/31f26fdeee1355a5c34592e401dd41e45d25a493/config.json "HTTP/1.1 200 OK"
+2026-03-04 11:17:59,509 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/31f26fdeee1355a5c34592e401dd41e45d25a493/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-04 11:17:59,799 INFO:   Hooks registered: 17 / 17 layers
+2026-03-04 11:18:02,468 INFO:   Anchor extraction: 2.7s
+2026-03-04 11:18:04,073 INFO:   Anchor stats ready for 17 layers
+2026-03-04 11:18:42,573 INFO:     Scored 1008/10125 (10%) — 38.3s
+2026-03-04 11:19:19,206 INFO:     Scored 2000/10125 (20%) — 75.0s
+2026-03-04 11:19:56,257 INFO:     Scored 3008/10125 (30%) — 112.0s
+2026-03-04 11:20:33,072 INFO:     Scored 4000/10125 (40%) — 148.8s
+2026-03-04 11:21:09,131 INFO:     Scored 5008/10125 (49%) — 184.9s
+2026-03-04 11:21:45,488 INFO:     Scored 6000/10125 (59%) — 221.2s
+2026-03-04 11:22:21,635 INFO:     Scored 7008/10125 (69%) — 257.4s
+2026-03-04 11:22:58,139 INFO:     Scored 8000/10125 (79%) — 293.9s
+2026-03-04 11:23:34,815 INFO:     Scored 9008/10125 (89%) — 330.6s
+2026-03-04 11:24:10,514 INFO:     Scored 10000/10125 (99%) — 366.3s
+2026-03-04 11:24:14,969 INFO:     Scored 10125/10125 (100%) — 370.7s
+2026-03-04 11:24:15,106 INFO:   Streaming scoring: 370.9s
+2026-03-04 11:24:15,119 INFO:   Layer  0: Spearman=+0.1122  Mono.strict=29.5%
+2026-03-04 11:24:15,130 INFO:   Layer  1: Spearman=+0.2834  Mono.strict=41.7%
+2026-03-04 11:24:15,140 INFO:   Layer  2: Spearman=+0.3101  Mono.strict=40.7%
+2026-03-04 11:24:15,150 INFO:   Layer  3: Spearman=+0.2186  Mono.strict=37.7%
+2026-03-04 11:24:15,160 INFO:   Layer  4: Spearman=+0.3068  Mono.strict=44.0%
+2026-03-04 11:24:15,170 INFO:   Layer  5: Spearman=+0.3609  Mono.strict=44.8%
+2026-03-04 11:24:15,180 INFO:   Layer  6: Spearman=+0.2792  Mono.strict=42.7%
+2026-03-04 11:24:15,191 INFO:   Layer  7: Spearman=+0.6321  Mono.strict=72.3%
+2026-03-04 11:24:15,200 INFO:   Layer  8: Spearman=+0.6581  Mono.strict=70.7%
+2026-03-04 11:24:15,211 INFO:   Layer  9: Spearman=+0.5855  Mono.strict=68.3%
+2026-03-04 11:24:15,221 INFO:   Layer 10: Spearman=+0.5974  Mono.strict=70.3%
+2026-03-04 11:24:15,231 INFO:   Layer 11: Spearman=+0.5875  Mono.strict=69.9%
+2026-03-04 11:24:15,241 INFO:   Layer 12: Spearman=+0.5600  Mono.strict=69.4%
+2026-03-04 11:24:15,251 INFO:   Layer 13: Spearman=+0.5766  Mono.strict=69.8%
+2026-03-04 11:24:15,260 INFO:   Layer 14: Spearman=+0.5946  Mono.strict=70.6%
+2026-03-04 11:24:15,270 INFO:   Layer 15: Spearman=+0.6422  Mono.strict=74.2%
+2026-03-04 11:24:15,280 INFO:   Layer 16: Spearman=+0.1556  Mono.strict=36.8%
+2026-03-04 11:24:15,570 INFO: CMMD skipped
+2026-03-04 11:24:15,570 INFO: 
+=========================================================================================================
+2026-03-04 11:24:15,570 INFO: RÉSUMÉ — KADID-10k Sweep All Layers
+2026-03-04 11:24:15,570 INFO: =========================================================================================================
+2026-03-04 11:24:15,570 INFO:   Backbone               L   Spearman   Kendall    Mono.strict     Mono.>=3
+2026-03-04 11:24:15,570 INFO: ---------------------------------------------------------------------------------------------------------
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 0    +0.1122   +0.0760    598/2025 (29.5%)    885/2025 (43.7%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 1    +0.2834   +0.1918    844/2025 (41.7%)   1188/2025 (58.7%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 2    +0.3101   +0.2104    825/2025 (40.7%)   1256/2025 (62.0%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 3    +0.2186   +0.1470    763/2025 (37.7%)   1101/2025 (54.4%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 4    +0.3068   +0.2086    892/2025 (44.0%)   1287/2025 (63.6%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 5    +0.3609   +0.2471    908/2025 (44.8%)   1354/2025 (66.9%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 6    +0.2792   +0.1890    864/2025 (42.7%)   1276/2025 (63.0%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 7    +0.6321   +0.4463   1464/2025 (72.3%)   1744/2025 (86.1%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 8    +0.6581   +0.4668   1431/2025 (70.7%)   1736/2025 (85.7%) ★
+2026-03-04 11:24:15,571 INFO:   SD-VAE                 9    +0.5855   +0.4077   1384/2025 (68.3%)   1717/2025 (84.8%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                10    +0.5974   +0.4171   1424/2025 (70.3%)   1726/2025 (85.2%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                11    +0.5875   +0.4089   1415/2025 (69.9%)   1730/2025 (85.4%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                12    +0.5600   +0.3870   1406/2025 (69.4%)   1720/2025 (84.9%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                13    +0.5766   +0.4004   1413/2025 (69.8%)   1732/2025 (85.5%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                14    +0.5946   +0.4141   1430/2025 (70.6%)   1730/2025 (85.4%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                15    +0.6422   +0.4547   1503/2025 (74.2%)   1769/2025 (87.4%)
+2026-03-04 11:24:15,571 INFO:   SD-VAE                16    +0.1556   +0.1050    745/2025 (36.8%)   1126/2025 (55.6%)
+2026-03-04 11:24:15,571 INFO: =========================================================================================================
+2026-03-04 11:24:15,571 INFO:   CSV saved: /home/jnapolitano/Documents/metrique/results/sweep_all_layers/sweep_results_20260304_112415.csv
+2026-03-04 11:24:15,710 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/sweep_all_layers/sweep_spearman_per_layer_20260304_112415.png
+2026-03-04 11:24:15,798 INFO:   Saved: /home/jnapolitano/Documents/metrique/results/sweep_all_layers/sweep_best_model_monotonicity_20260304_112415.png
+2026-03-04 11:24:15,798 INFO: 
+Tous les résultats dans : /home/jnapolitano/Documents/metrique/results/sweep_all_layers

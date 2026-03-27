@@ -1,0 +1,72 @@
+2026-03-03 16:45:23,482 INFO: Device: cuda
+2026-03-03 16:45:23,502 INFO: KADID CSV: 10125 images
+2026-03-03 16:45:23,555 INFO: 81 références  |  10125 images d'éval
+2026-03-03 16:45:23,555 INFO: 
+================================================================================
+2026-03-03 16:45:23,555 INFO: BACKBONE: sd_vae  (SD-VAE)  batch=16
+2026-03-03 16:45:23,555 INFO: ================================================================================
+2026-03-03 16:45:23,555 INFO:   Loading sd_vae ...
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+2026-03-03 16:45:25,172 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-03 16:45:25,184 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/stabilityai/sd-vae-ft-mse/31f26fdeee1355a5c34592e401dd41e45d25a493/config.json "HTTP/1.1 200 OK"
+2026-03-03 16:45:25,307 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/31f26fdeee1355a5c34592e401dd41e45d25a493/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-03 16:45:25,609 INFO:   Hooks registered: 17 / 17 layers
+2026-03-03 16:45:28,506 INFO:   Anchor extraction: 2.9s
+2026-03-03 16:45:29,385 INFO:   Anchor stats ready for 17 layers
+2026-03-03 16:46:05,837 INFO:     Scored 1008/10125 (10%) — 36.3s
+2026-03-03 16:46:40,827 INFO:     Scored 2000/10125 (20%) — 71.2s
+2026-03-03 16:47:16,725 INFO:     Scored 3008/10125 (30%) — 107.1s
+2026-03-03 16:47:53,633 INFO:     Scored 4000/10125 (40%) — 144.1s
+2026-03-03 16:48:30,680 INFO:     Scored 5008/10125 (49%) — 181.1s
+2026-03-03 16:49:07,170 INFO:     Scored 6000/10125 (59%) — 217.6s
+2026-03-03 16:49:44,381 INFO:     Scored 7008/10125 (69%) — 254.8s
+2026-03-03 16:50:20,794 INFO:     Scored 8000/10125 (79%) — 291.2s
+2026-03-03 16:50:57,966 INFO:     Scored 9008/10125 (89%) — 328.4s
+2026-03-03 16:51:34,444 INFO:     Scored 10000/10125 (99%) — 364.9s
+2026-03-03 16:51:39,154 INFO:     Scored 10125/10125 (100%) — 369.6s
+2026-03-03 16:51:39,334 INFO:   Streaming scoring: 369.8s
+2026-03-03 16:51:39,347 INFO:   Layer  0: Spearman=+0.0816  Mono.strict=31.1%
+2026-03-03 16:51:39,357 INFO:   Layer  1: Spearman=+0.1782  Mono.strict=38.7%
+2026-03-03 16:51:39,367 INFO:   Layer  2: Spearman=+0.1796  Mono.strict=37.5%
+2026-03-03 16:51:39,377 INFO:   Layer  3: Spearman=+0.1643  Mono.strict=37.0%
+2026-03-03 16:51:39,387 INFO:   Layer  4: Spearman=+0.1705  Mono.strict=38.5%
+2026-03-03 16:51:39,397 INFO:   Layer  5: Spearman=+0.1679  Mono.strict=37.8%
+2026-03-03 16:51:39,407 INFO:   Layer  6: Spearman=+0.1494  Mono.strict=36.7%
+2026-03-03 16:51:39,416 INFO:   Layer  7: Spearman=+0.1640  Mono.strict=38.8%
+2026-03-03 16:51:39,426 INFO:   Layer  8: Spearman=+0.1576  Mono.strict=40.0%
+2026-03-03 16:51:39,436 INFO:   Layer  9: Spearman=+0.1652  Mono.strict=36.7%
+2026-03-03 16:51:39,446 INFO:   Layer 10: Spearman=+0.1800  Mono.strict=37.1%
+2026-03-03 16:51:39,456 INFO:   Layer 11: Spearman=+0.1946  Mono.strict=39.6%
+2026-03-03 16:51:39,466 INFO:   Layer 12: Spearman=+0.2072  Mono.strict=39.9%
+2026-03-03 16:51:39,476 INFO:   Layer 13: Spearman=+0.2119  Mono.strict=40.1%
+2026-03-03 16:51:39,486 INFO:   Layer 14: Spearman=+0.2253  Mono.strict=40.8%
+2026-03-03 16:51:39,496 INFO:   Layer 15: Spearman=+0.2794  Mono.strict=48.9%
+2026-03-03 16:51:39,506 INFO:   Layer 16: Spearman=+0.1428  Mono.strict=36.1%
+2026-03-03 16:51:39,827 INFO: 
+================================================================================
+2026-03-03 16:51:39,827 INFO: BACKBONE: dc_ae  (DC-AE)  batch=4
+2026-03-03 16:51:39,827 INFO: ================================================================================
+2026-03-03 16:51:39,827 INFO:   Loading dc_ae ...
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+2026-03-03 16:51:39,997 INFO: HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-03 16:51:40,010 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/d58275ea9674845e5e36cbf280987f67bee0e85c/config.json "HTTP/1.1 200 OK"
+2026-03-03 16:51:40,132 INFO: HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/d58275ea9674845e5e36cbf280987f67bee0e85c/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-03 16:51:41,047 WARNING:     Could not hook layer 1 (encoder.down_blocks.0.0): index 0 is out of range
+2026-03-03 16:51:41,048 WARNING:     Could not hook layer 2 (encoder.down_blocks.0.1): index 1 is out of range
+2026-03-03 16:51:41,048 WARNING:     Could not hook layer 3 (encoder.down_blocks.0.2): index 2 is out of range
+2026-03-03 16:51:41,048 WARNING:     Could not hook layer 13 (encoder.down_blocks.3.3): index 3 is out of range
+2026-03-03 16:51:41,048 WARNING:     Could not hook layer 17 (encoder.down_blocks.4.3): index 3 is out of range
+2026-03-03 16:51:41,048 INFO:   Hooks registered: 17 / 22 layers
+2026-03-03 16:51:54,586 INFO:   Anchor extraction: 13.5s
+2026-03-03 16:51:55,703 INFO:   Anchor stats ready for 17 layers
+2026-03-03 16:55:00,438 INFO:     Scored 1000/10125 (10%) — 184.5s

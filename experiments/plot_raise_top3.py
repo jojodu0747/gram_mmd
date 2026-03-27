@@ -620,6 +620,132 @@ def fig_grouping_1d(out: Path):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+#  Figure 7 — frise chronologique images + scores
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def fig_frieze(rows, scores, group_mos, out: Path):
+    """
+    Frise en deux parties :
+      - Haut  : 5 vignettes RAISE (groupes 1/24, 2/24, 3/24 … 23/24, 24/24)
+      - Bas   : évolution des scores MMD² sur les 24 groupes
+                segments rouges = inversions (direction contraire à celle attendue)
+    """
+    from PIL import Image as PILImage
+
+    # ── 1. Chemins RAISE ─────────────────────────────────────────────
+    mos_dict = {}
+    for cp in [RAISE_ROOT / "ratings" / "train.csv",
+               RAISE_ROOT / "ratings" / "test.csv"]:
+        with open(cp, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                mos_dict[row["filename"]] = float(row["MOS_Rating"])
+
+    all_imgs = {}
+    for folder in [RAISE_ROOT / "images" / "train_images",
+                   RAISE_ROOT / "images" / "test_images"]:
+        for ext in ["png", "PNG", "jpg", "jpeg"]:
+            for p in glob_module.glob(str(folder / f"*.{ext}")):
+                all_imgs[Path(p).name] = p
+
+    items = sorted(
+        [(mos_dict[fn], fn, all_imgs[fn])
+         for fn in all_imgs if fn.startswith("f") and fn in mos_dict],
+        key=lambda x: x[0],
+    )
+    grouped = [items[g * GROUP_SIZE:(g + 1) * GROUP_SIZE] for g in range(N_GROUPS)]
+
+    # Image représentative = image du milieu de chaque groupe
+    # Override possible par index global dans items[]
+    shown = [0, 1, 2, N_GROUPS - 2, N_GROUPS - 1]   # indices 0-based
+    # index global → (groupe, index dans groupe)
+    THUMB_OVERRIDE = {
+        0: (0,  0),   # items[0]  → groupe 0, index 0
+        1: (1, 18),   # items[38] → groupe 1, index 18
+    }
+
+    def load_thumb(path, size=180):
+        img = PILImage.open(path).convert("RGB")
+        w, h = img.size
+        s = min(w, h)
+        img = img.crop(((w - s) // 2, (h - s) // 2, (w + s) // 2, (h + s) // 2))
+        return np.array(img.resize((size, size), PILImage.LANCZOS))
+
+    # ── 2. Figure ────────────────────────────────────────────────────
+    fig = plt.figure(figsize=(18, 10))
+    gs_main = fig.add_gridspec(2, 1, height_ratios=[1.1, 2.6], hspace=0.18)
+
+    # Haut : 7 colonnes [img0, img1, img2, ..., ..., img22, img23]
+    gs_top = gs_main[0].subgridspec(
+        1, 7, width_ratios=[1, 1, 1, 0.25, 0.25, 1, 1], wspace=0.04
+    )
+    img_cols   = [0, 1, 2, 5, 6]
+    for col, g in zip(img_cols, shown):
+        ax_i = fig.add_subplot(gs_top[0, col])
+        idx_in_grp = THUMB_OVERRIDE[g][1] if g in THUMB_OVERRIDE else GROUP_SIZE // 2
+        ax_i.imshow(load_thumb(grouped[g][idx_in_grp][2]))
+        ax_i.axis("off")
+        ax_i.set_title(
+            f"{g + 1}/{N_GROUPS}\nMOS = {group_mos[g]:.1f}",
+            fontsize=11, fontweight="bold", pad=5,
+        )
+
+    ax_dots = fig.add_subplot(gs_top[0, 3:5])
+    ax_dots.axis("off")
+    ax_dots.text(0.5, 0.42, "•  •  •", ha="center", va="center",
+                 fontsize=22, color="#888", transform=ax_dots.transAxes)
+
+    # ── 3. Score plot ─────────────────────────────────────────────────
+    ax = fig.add_subplot(gs_main[1])
+    ax.set_facecolor("#f8f8f8")
+    x = np.arange(N_GROUPS)
+
+    # Ordre d'affichage : GMMD d'abord, CMMD ensuite
+    ordered_rows = sorted(rows, key=lambda r: (r["backbone"] == "CMMD", r["label"]))
+
+    for r in ordered_rows:
+        label  = r["label"]
+        # Exclure CMMD γ_med
+        if r["backbone"] == "CMMD" and r["gamma_tag"] == "median":
+            continue
+        sc     = scores[label].astype(np.float64)
+        bname  = r["backbone"]
+        color  = COLORS.get(bname, "#9C27B0")
+        sp     = r["spearman"]
+        expect_down = (sp < 0)
+
+        ax.scatter(x, sc, color=color, s=28, alpha=0.85, marker="x",
+                   linewidths=1.4, label=f"{label}  (ρ={sp:+.3f})", zorder=4)
+
+        # Régression linéaire
+        slope, intercept, *_ = linregress(x, sc)
+        ax.plot(x, slope * x + intercept, color=color, lw=1.5,
+                ls=":", alpha=0.6, zorder=3)
+
+
+    # Lignes verticales aux groupes montrés
+    for g in shown:
+        ax.axvline(g, color="#aaa", lw=0.9, ls=":", zorder=2)
+
+    ax.set_xticks(x)
+    ax.set_xticklabels([str(g + 1) for g in x], fontsize=8.5)
+    ax.set_xlabel("Ranking (increasing MOS)", fontsize=12)
+    ax.set_ylabel("MMD²", fontsize=12)
+    ax.legend(fontsize=9, loc="upper right", framealpha=0.92, ncol=2)
+    ax.grid(True, alpha=0.22)
+
+    fig.suptitle(
+        f"RAISE AI  ·  {N_GROUPS} groups × {GROUP_SIZE} images  ·  1 000 COCO anchor\n"
+        "Dotted lines = linear regression per metric",
+        fontsize=14, fontweight="bold", y=0.98,
+    )
+
+    p_out = out / "07_frieze.png"
+    fig.savefig(p_out, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+    print(f"  Saved {p_out}")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 #  MAIN
 # ═══════════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
@@ -634,6 +760,7 @@ if __name__ == "__main__":
     fig_table(rows, OUT)
     fig_regression(rows, scores, group_mos, OUT)
     fig_grouping_1d(OUT)
+    fig_frieze(rows, scores, group_mos, OUT)
 
     print("\nRésumé :")
     print(f"  {'Label':<35} {'ρ':>7}  {'Dir':>4}  {'Mono':>7}")

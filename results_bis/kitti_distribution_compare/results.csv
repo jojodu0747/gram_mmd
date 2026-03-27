@@ -1,0 +1,6 @@
+method,virtual_kitti_mmd2,tracking_mmd2,ratio_tracking_vkitti
+Gram gamma_div10 (γ=2.09e-07),2.960056e-01,1.251340e-03,0.0042
+Gram gamma_med (γ=2.09e-06),4.089582e-01,9.215117e-03,0.0225
+Gram 10x_gamma (γ=2.09e-05),2.346028e-02,1.171451e-02,0.4993
+Gram 100x_gamma (γ=2.09e-04),3.568277e-04,1.734200e-03,4.8600
+CMMD (γ=0.005),4.374636e-01,1.522577e-02,0.0348

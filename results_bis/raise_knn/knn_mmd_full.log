@@ -1,0 +1,84 @@
+2026-03-04 16:40:31,109 INFO: ====================================================================
+2026-03-04 16:40:31,109 INFO: kNN-MMD RAISE — MMD biaisé avec k plus proches voisins COCO
+2026-03-04 16:40:31,109 INFO:   k values      : [1, 5, 10, 25, 50, 100, 200, 500]
+2026-03-04 16:40:31,109 INFO:   Ancrage       : 1000 COCO (seed=42)
+2026-03-04 16:40:31,109 INFO:   Gamma         : 2.80e-05
+2026-03-04 16:40:31,109 INFO:   PCA           : désactivé
+2026-03-04 16:40:31,110 INFO:   Device        : cuda
+2026-03-04 16:40:31,110 INFO: ====================================================================
+2026-03-04 16:40:31,118 INFO: Ancrage COCO : 1000 images (seed=42)
+2026-03-04 16:40:31,122 INFO: RAISE IA : 480 images  MOS [10.4 … 87.8]
+2026-03-04 16:40:31,122 INFO: 
+====================================================================
+2026-03-04 16:40:31,122 INFO: Backbone : SD-VAE l7
+2026-03-04 16:40:31,122 INFO: ====================================================================
+2026-03-04 16:40:31,122 INFO: Loading backbone: sd_vae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+2026-03-04 16:40:32,800 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-04 16:40:32,811 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/stabilityai/sd-vae-ft-mse/31f26fdeee1355a5c34592e401dd41e45d25a493/config.json "HTTP/1.1 200 OK"
+2026-03-04 16:40:32,922 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/31f26fdeee1355a5c34592e401dd41e45d25a493/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-04 16:40:33,918 INFO:   Extraction ancrage (1000 imgs, bs=8)...
+2026-03-04 16:40:34,051 INFO: Extracting features: batch 1/125
+2026-03-04 16:40:37,226 INFO: Extracting features: batch 11/125
+2026-03-04 16:40:39,435 INFO: Extracting features: batch 21/125
+2026-03-04 16:40:41,183 INFO: Extracting features: batch 31/125
+2026-03-04 16:40:43,585 INFO: Extracting features: batch 41/125
+2026-03-04 16:40:46,215 INFO: Extracting features: batch 51/125
+2026-03-04 16:40:48,683 INFO: Extracting features: batch 61/125
+2026-03-04 16:40:51,392 INFO: Extracting features: batch 71/125
+2026-03-04 16:40:53,814 INFO: Extracting features: batch 81/125
+2026-03-04 16:40:56,495 INFO: Extracting features: batch 91/125
+2026-03-04 16:40:59,042 INFO: Extracting features: batch 101/125
+2026-03-04 16:41:01,471 INFO: Extracting features: batch 111/125
+2026-03-04 16:41:03,901 INFO: Extracting features: batch 121/125
+2026-03-04 16:41:05,465 INFO: Extracted raw features: shape = (1000, 131328)
+2026-03-04 16:41:07,162 INFO: Fitted scaler on Gram features: mean=2.69e-01, std=1.97e+00
+2026-03-04 16:41:07,162 INFO: Final feature shape: (1000, 131328)
+2026-03-04 16:41:07,192 INFO:   → ref : (1000, 131328)  (525 MB)
+2026-03-04 16:41:07,193 INFO:   Extraction query (480 imgs)...
+2026-03-04 16:41:07,381 INFO: Extracting features: batch 1/60
+2026-03-04 16:41:09,858 INFO: Extracting features: batch 11/60
+2026-03-04 16:41:12,622 INFO: Extracting features: batch 21/60
+2026-03-04 16:41:15,075 INFO: Extracting features: batch 31/60
+2026-03-04 16:41:17,806 INFO: Extracting features: batch 41/60
+2026-03-04 16:41:20,332 INFO: Extracting features: batch 51/60
+2026-03-04 16:41:23,003 INFO: Extracted raw features: shape = (480, 131328)
+2026-03-04 16:41:23,203 INFO: Final feature shape: (480, 131328)
+2026-03-04 16:41:23,256 INFO:   → qry : (480, 131328)  (252 MB)
+2026-03-04 16:41:23,400 INFO:   Calcul distances sur cuda...
+2026-03-04 16:41:24,390 INFO:   D2_qr : (480, 1000)  K_rr : (1000, 1000)
+2026-03-04 16:41:24,390 INFO:   kNN-MMD (8 valeurs de k)...
+2026-03-04 16:41:24,402 INFO:   kNN_MMD_sd_vae_l7_k1                                               -rho=-0.1316  p=3.873e-03*  [neutre]
+2026-03-04 16:41:24,410 INFO:   kNN_MMD_sd_vae_l7_k5                                               -rho=-0.1074  p=1.859e-02*  [neutre]
+2026-03-04 16:41:24,418 INFO:   kNN_MMD_sd_vae_l7_k10                                              -rho=-0.1015  p=2.616e-02*  [neutre]
+2026-03-04 16:41:24,427 INFO:   kNN_MMD_sd_vae_l7_k25                                              -rho=-0.1069  p=1.915e-02*  [neutre]
+2026-03-04 16:41:24,440 INFO:   kNN_MMD_sd_vae_l7_k50                                              -rho=-0.1017  p=2.592e-02*  [neutre]
+2026-03-04 16:41:24,463 INFO:   kNN_MMD_sd_vae_l7_k100                                             -rho=-0.0896  p=4.975e-02*  [neutre]
+2026-03-04 16:41:24,582 INFO:   kNN_MMD_sd_vae_l7_k200                                             -rho=-0.0909  p=4.649e-02*  [neutre]
+2026-03-04 16:41:24,927 INFO:   kNN_MMD_sd_vae_l7_k500                                             -rho=-0.0977  p=3.243e-02*  [neutre]
+2026-03-04 16:41:24,928 INFO:   MMD global (baseline)...
+2026-03-04 16:41:24,929 INFO:   MMDpt_sd_vae_l7_global                                             -rho=-0.0981  p=3.167e-02*  [neutre]
+2026-03-04 16:41:25,106 INFO: 
+====================================================================
+2026-03-04 16:41:25,107 INFO: Backbone : DC-AE l10
+2026-03-04 16:41:25,107 INFO: ====================================================================
+2026-03-04 16:41:25,107 INFO: Loading backbone: dc_ae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+2026-03-04 16:41:25,273 INFO: HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-04 16:41:25,283 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/d58275ea9674845e5e36cbf280987f67bee0e85c/config.json "HTTP/1.1 200 OK"
+2026-03-04 16:41:25,390 INFO: HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/d58275ea9674845e5e36cbf280987f67bee0e85c/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-04 16:41:28,123 INFO:   Extraction ancrage (1000 imgs, bs=8)...
+2026-03-04 16:41:28,411 INFO: Extracting features: batch 1/125
+2026-03-04 16:41:45,436 INFO: Extracting features: batch 11/125

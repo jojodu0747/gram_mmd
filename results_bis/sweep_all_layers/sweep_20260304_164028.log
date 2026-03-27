@@ -1,0 +1,23 @@
+2026-03-04 16:40:31,104 INFO: Device: cuda
+2026-03-04 16:40:31,125 INFO: KADID CSV: 10125 images
+2026-03-04 16:40:31,180 INFO: 81 références  |  10125 images d'éval
+2026-03-04 16:40:31,180 INFO: 
+================================================================================
+2026-03-04 16:40:31,180 INFO: BACKBONE: sd_vae  (SD-VAE)  batch=16
+2026-03-04 16:40:31,180 INFO: ================================================================================
+2026-03-04 16:40:31,180 INFO:   Loading sd_vae ...
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+2026-03-04 16:40:32,743 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-04 16:40:32,758 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/stabilityai/sd-vae-ft-mse/31f26fdeee1355a5c34592e401dd41e45d25a493/config.json "HTTP/1.1 200 OK"
+2026-03-04 16:40:32,883 INFO: HTTP Request: HEAD https://huggingface.co/stabilityai/sd-vae-ft-mse/resolve/31f26fdeee1355a5c34592e401dd41e45d25a493/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-04 16:40:33,920 INFO:   Hooks registered: 17 / 17 layers
+2026-03-04 16:40:38,880 INFO:   Anchor extraction: 5.0s
+2026-03-04 16:40:40,475 INFO:   Anchor stats ready for 17 layers
+2026-03-04 16:41:43,213 INFO:     Scored 1008/10125 (10%) — 62.6s
+2026-03-04 16:42:23,131 INFO:     Scored 2000/10125 (20%) — 102.5s

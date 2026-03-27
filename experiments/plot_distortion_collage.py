@@ -63,8 +63,8 @@ DIST_NAMES = {
 }
 
 # 10 dégradations par défaut
-DEFAULT_TYPES  = [1, 5, 6, 7, 8, 9, 12, 13, 14, 20]
-DEFAULT_LEVELS = [1, 5, 10]   # colonnes affichées
+DEFAULT_TYPES  = [5, 6, 7, 8, 9, 12, 20]
+DEFAULT_LEVELS = [1, 3, 5, 7, 10]   # colonnes affichées
 THUMB_SIZE     = 200   # pixels (carré)
 PAD            = 6     # pixels entre vignettes
 LABEL_H        = 26    # hauteur de la barre de titre de colonne

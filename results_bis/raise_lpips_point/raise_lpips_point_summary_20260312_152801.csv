@@ -1,0 +1,2 @@
+backbone,layer,gamma_mult,gamma,n_anchor,n_queries,spearman_rho,p_spearman,pearson_r,p_pearson
+lpips_vgg,5,10.0,9.022041693674046e-05,1000,480,-0.10886304962689651,0.017035241547841615,-0.1417950915753492,0.0018442933369165828

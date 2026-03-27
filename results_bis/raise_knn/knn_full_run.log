@@ -1,0 +1,80 @@
+2026-03-04 15:56:44,147 INFO: ======================================================================
+2026-03-04 15:56:44,147 INFO: kNN RAISE — distance aux k plus proches voisins COCO
+2026-03-04 15:56:44,147 INFO:   k values : [1, 5, 10, 25, 50, 100, 200, 500]
+2026-03-04 15:56:44,147 INFO:   Ancrage  : 1000 COCO (seed=42)
+2026-03-04 15:56:44,147 INFO:   MMD baseline gamma : 2.80e-05
+2026-03-04 15:56:44,147 INFO:   Device   : cuda
+2026-03-04 15:56:44,147 INFO: ======================================================================
+2026-03-04 15:56:44,158 INFO: Ancrage COCO : 1000 images (seed=42)
+2026-03-04 15:56:44,161 INFO: RAISE IA : 480 images  MOS [10.4 … 87.8]
+2026-03-04 15:56:44,161 INFO: 
+=================================================================
+2026-03-04 15:56:44,161 INFO: Backbone : DC-AE l10 (down_blocks.3.0)
+2026-03-04 15:56:44,161 INFO: =================================================================
+2026-03-04 15:56:44,161 INFO: Loading backbone: dc_ae
+Cannot initialize model with low cpu memory usage because `accelerate` was not found in the environment. Defaulting to `low_cpu_mem_usage=False`. It is strongly recommended to install `accelerate` for faster and less memory-intense model loading. You can do so with: 
+```
+pip install accelerate
+```
+.
+/home/jnapolitano/Documents/metrique/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:202: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+2026-03-04 15:56:46,149 INFO: HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-04 15:56:46,161 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/d58275ea9674845e5e36cbf280987f67bee0e85c/config.json "HTTP/1.1 200 OK"
+2026-03-04 15:56:46,275 INFO: HTTP Request: HEAD https://huggingface.co/mit-han-lab/dc-ae-f64c128-in-1.0-diffusers/resolve/d58275ea9674845e5e36cbf280987f67bee0e85c/diffusion_pytorch_model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-03-04 15:56:49,932 INFO:   Extraction ancrage (1000 imgs, bs=8)...
+2026-03-04 15:56:50,265 INFO: Extracting features: batch 1/125
+2026-03-04 15:57:01,018 INFO: Extracting features: batch 11/125
+2026-03-04 15:57:11,008 INFO: Extracting features: batch 21/125
+2026-03-04 15:57:20,995 INFO: Extracting features: batch 31/125
+2026-03-04 15:57:31,015 INFO: Extracting features: batch 41/125
+2026-03-04 15:57:41,038 INFO: Extracting features: batch 51/125
+2026-03-04 15:57:51,043 INFO: Extracting features: batch 61/125
+2026-03-04 15:58:01,014 INFO: Extracting features: batch 71/125
+2026-03-04 15:58:11,173 INFO: Extracting features: batch 81/125
+2026-03-04 15:58:21,206 INFO: Extracting features: batch 91/125
+2026-03-04 15:58:31,262 INFO: Extracting features: batch 101/125
+2026-03-04 15:58:41,293 INFO: Extracting features: batch 111/125
+2026-03-04 15:58:51,409 INFO: Extracting features: batch 121/125
+2026-03-04 15:58:56,655 INFO: Extracted raw features: shape = (1000, 131328)
+2026-03-04 15:58:58,215 INFO: Fitted scaler on Gram features: mean=1.13e-02, std=1.47e-01
+2026-03-04 15:58:58,215 INFO: Final feature shape: (1000, 131328)
+2026-03-04 15:58:58,248 INFO:   → ref shape : (1000, 131328)
+2026-03-04 15:58:58,248 INFO:   Extraction query (480 imgs)...
+2026-03-04 15:58:58,543 INFO: Extracting features: batch 1/60
+2026-03-04 15:59:08,642 INFO: Extracting features: batch 11/60
+2026-03-04 15:59:18,649 INFO: Extracting features: batch 21/60
+2026-03-04 15:59:28,652 INFO: Extracting features: batch 31/60
+2026-03-04 15:59:38,695 INFO: Extracting features: batch 41/60
+2026-03-04 15:59:48,789 INFO: Extracting features: batch 51/60
+2026-03-04 15:59:59,043 INFO: Extracted raw features: shape = (480, 131328)
+2026-03-04 15:59:59,235 INFO: Final feature shape: (480, 131328)
+2026-03-04 15:59:59,279 INFO:   → qry shape : (480, 131328)
+2026-03-04 15:59:59,424 INFO:   kNN scoring (8 valeurs de k)...
+2026-03-04 16:00:00,048 INFO:   kNN_dc_ae_l10_k1                                              -rho=-0.1085  p=1.743e-02  [neutre]
+2026-03-04 16:00:00,049 INFO:   kNN_dc_ae_l10_k5                                              -rho=-0.0989  p=3.035e-02  [neutre]
+2026-03-04 16:00:00,050 INFO:   kNN_dc_ae_l10_k10                                             -rho=-0.0919  p=4.411e-02  [neutre]
+2026-03-04 16:00:00,051 INFO:   kNN_dc_ae_l10_k25                                             -rho=-0.0836  p=6.740e-02  [neutre]
+2026-03-04 16:00:00,052 INFO:   kNN_dc_ae_l10_k50                                             -rho=-0.0799  p=8.039e-02  [neutre]
+2026-03-04 16:00:00,053 INFO:   kNN_dc_ae_l10_k100                                            -rho=-0.0747  p=1.019e-01  [neutre]
+2026-03-04 16:00:00,053 INFO:   kNN_dc_ae_l10_k200                                            -rho=-0.0718  p=1.161e-01  [neutre]
+2026-03-04 16:00:00,054 INFO:   kNN_dc_ae_l10_k500                                            -rho=-0.0642  p=1.601e-01  [neutre]
+2026-03-04 16:00:00,055 INFO:   MMD point baseline (gamma=2.80e-05)...
+2026-03-04 16:00:00,992 INFO:   MMDpt_dc_ae_l10_g2.80e-05                                     -rho=-0.0677  p=1.385e-01  [neutre]
+2026-03-04 16:00:01,138 INFO: 
+=================================================================
+2026-03-04 16:00:01,138 INFO: Backbone : DINOv2-B l5 (blocks.4)
+2026-03-04 16:00:01,138 INFO: =================================================================
+2026-03-04 16:00:01,138 INFO: Loading backbone: dinov2_vitb14
+Using cache found in /home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main
+/home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/home/jnapolitano/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+2026-03-04 16:00:01,274 INFO: using MLP layer as FFN
+2026-03-04 16:00:02,474 INFO:   Extraction ancrage (1000 imgs, bs=64)...
+2026-03-04 16:00:03,922 INFO: Extracting features: batch 1/16
+2026-03-04 16:00:29,066 INFO: Extracting features: batch 11/16
+2026-03-04 16:00:43,614 INFO: Extracted raw features: shape = (1000, 295296)
