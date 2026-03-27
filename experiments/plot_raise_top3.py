@@ -483,19 +483,19 @@ def fig_regression(rows, scores, group_mos, out: Path):
         va_txt  = "top"        if is_cmmd else "bottom"
         ax.text(
             tx, ty,
-            f"pente = {slope:.3e}\n"
-            f"pente norm. = {slope_norm:+.3f}\n"
+            f"slope = {slope:.3e}\n"
             f"R² = {rval**2:.3f}   p = {pval:.2e}\n"
             f"direction : {sign_ok}",
             transform=ax.transAxes,
-            ha="left", va=va_txt, fontsize=8.5,
+            ha="left", va=va_txt, fontsize=11,
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=color, alpha=0.9),
         )
 
         sp = r["spearman"]
-        ax.set_title(f"{r['label']}  (ρ={sp:+.3f})", fontsize=9.5, fontweight="bold")
-        ax.set_xlabel("MOS moyen du groupe", fontsize=9)
-        ax.set_ylabel("MMD²", fontsize=9)
+        ax.set_title(f"{r['label']}  (ρ={sp:+.3f})", fontsize=12, fontweight="bold")
+        ax.set_xlabel("Mean group MOS", fontsize=11)
+        ax.set_ylabel("MMD²", fontsize=11)
+        ax.tick_params(axis="both", labelsize=10)
         ax.grid(True, alpha=0.25)
 
     # Masquer les axes inutilisés
@@ -503,11 +503,11 @@ def fig_regression(rows, scores, group_mos, out: Path):
         ax.set_visible(False)
 
     fig.suptitle(
-        f"Régression linéaire  MMD² ~ MOS  ·  RAISE IA {N_GROUPS}×{GROUP_SIZE}  ·  1 000 COCO anchor\n"
-        "pente norm. = pente × σ_MOS / σ_MMD²   (–1 = parfaite corrélation négative)",
-        fontsize=11, fontweight="bold",
+        f"Linear Regression  MMD² ~ MOS\nRAISE AI {N_GROUPS}×{GROUP_SIZE}  ·  1 000 COCO anchor",
+        fontsize=23, fontweight="bold",
     )
     plt.tight_layout()
+    plt.subplots_adjust(top=0.87)
     p = out / "05_regression.png"
     fig.savefig(p, dpi=160, bbox_inches="tight")
     plt.close(fig)
@@ -552,7 +552,7 @@ def fig_grouping_1d(out: Path):
     group_ids = np.repeat(np.arange(N_GROUPS), GROUP_SIZE)  # 0,0,...,1,1,...
     cmap      = plt.get_cmap("tab20", N_GROUPS)
 
-    fig, ax = plt.subplots(figsize=(14, 3.8))
+    fig, ax = plt.subplots(figsize=(14, 4.5))
     ax.set_facecolor("#f0f0f0")
 
     # Bandes de couleur alternées (fond)
@@ -584,18 +584,20 @@ def fig_grouping_1d(out: Path):
     for g in range(N_GROUPS):
         mid_mos = all_mos[g * GROUP_SIZE: (g + 1) * GROUP_SIZE].mean()
         ax.text(mid_mos, 0.48, str(g),
-                ha="center", va="bottom", fontsize=6.5,
+                ha="center", va="bottom", fontsize=15,
                 color=cmap(g), fontweight="bold", zorder=4)
 
-    ax.set_xlabel("MOS (increasing quality →)", fontsize=11)
+    ax.set_xlabel("MOS (increasing quality →)", fontsize=22)
+    ax.tick_params(axis="x", labelsize=14)
     ax.set_yticks([])
     ax.set_ylim(-0.55, 0.7)
     ax.set_xlim(all_mos.min() - 0.5, all_mos.max() + 0.5)
     ax.set_title(
-        f"Split of {n_total} RAISE IA images into {N_GROUPS} groups of {GROUP_SIZE}  "
+        f"Split of {n_total} RAISE AI images into {N_GROUPS} groups of {GROUP_SIZE}  "
         f"(sorted by ascending MOS)\n"
         f"Each dot = 1 image · MOS ∈ [{all_mos.min():.1f}, {all_mos.max():.1f}]",
-        fontsize=10.5, fontweight="bold",
+        fontsize=22, fontweight="bold",
+        pad=12,
     )
     ax.grid(True, axis="x", alpha=0.3, zorder=0)
 
@@ -603,11 +605,11 @@ def fig_grouping_1d(out: Path):
     sm.set_array([])
     cbar = fig.colorbar(sm, ax=ax, orientation="horizontal",
                         fraction=0.025, pad=0.22, aspect=50)
-    cbar.set_label("Group index (0 = lowest quality)", fontsize=9)
+    cbar.set_label("Group index (0 = lowest quality)", fontsize=17)
     cbar.set_ticks(np.linspace(0, N_GROUPS - 1, min(N_GROUPS, 13)))
     cbar.set_ticklabels(
         [str(int(round(t))) for t in np.linspace(0, N_GROUPS - 1, min(N_GROUPS, 13))],
-        fontsize=8
+        fontsize=15
     )
 
     plt.tight_layout()

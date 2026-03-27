@@ -551,35 +551,35 @@ def plot_scatter(all_results, out_dir: Path):
             use_arrow = entry["label"] not in NO_ARROW
             ax.annotate(entry["label"], (kt, sp),
                         textcoords="offset points", xytext=offset,
-                        fontsize=6.5, zorder=6,
+                        fontsize=9.5, zorder=6,
                         arrowprops=dict(arrowstyle="-", color="gray",
                                         lw=0.8, shrinkA=0, shrinkB=3)
                         if use_arrow else None)
 
     color_handles = [
-        Line2D([0],[0], marker="o", color=c, linestyle="None", markersize=8,
+        Line2D([0],[0], marker="o", color=c, linestyle="None", markersize=9,
                markeredgecolor="black", markeredgewidth=0.6, label=n)
         for n, c in BACKBONE_COLORS.items()
         if any(e.get("backbone_name") == n for e in all_results)
     ]
     marker_handles = [
-        Line2D([0],[0], marker=m, color="gray", linestyle="None", markersize=8,
+        Line2D([0],[0], marker=m, color="gray", linestyle="None", markersize=9,
                markeredgecolor="black", markeredgewidth=0.5, label=GAMMA_LABELS[t])
         for t, m in GAMMA_MARKERS.items()
         if any(e["gamma_tag"] == t for e in all_results)
     ]
-    leg1 = ax.legend(handles=color_handles, fontsize=8, loc="upper left",
-                     title="Backbone", framealpha=0.9)
+    leg1 = ax.legend(handles=color_handles, fontsize=10, loc="upper left",
+                     title="Backbone", title_fontsize=10, framealpha=0.9)
     ax.add_artist(leg1)
-    ax.legend(handles=marker_handles, fontsize=8, loc="lower right",
-              title="γ", framealpha=0.9)
+    ax.legend(handles=marker_handles, fontsize=10, loc="lower right",
+              title="γ", title_fontsize=10, framealpha=0.9)
 
-    ax.set_xlabel("-Kendall τ", fontsize=12)
-    ax.set_ylabel("-Spearman ρ", fontsize=12)
+    ax.set_xlabel("-Kendall τ", fontsize=15)
+    ax.set_ylabel("-Spearman ρ", fontsize=15)
     ax.set_title(
         "KADID-10k  ·  1000 COCO anchor\n"
         "-Spearman ρ vs -Kendall τ",
-        fontsize=11, fontweight="bold"
+        fontsize=12.5, fontweight="bold", pad=10
     )
     ax.grid(True, alpha=0.25)
     plt.tight_layout()
@@ -604,7 +604,7 @@ def plot_tripanel(all_results, out_dir: Path):
 
     def bar_panel(ax, vals, ylabel):
         ax.bar(x, vals, color=colors, edgecolor="black", linewidth=0.5)
-        ax.set_ylabel(ylabel, fontsize=11)
+        ax.set_ylabel(ylabel, fontsize=13)
         ax.set_ylim(0, max(vals) * 1.18 if vals else 1)
         ax.axhline(0, color="gray", linewidth=0.5)
         ax.grid(True, axis="y", alpha=0.3)
@@ -614,12 +614,12 @@ def plot_tripanel(all_results, out_dir: Path):
     bar_panel(axes[1], kt_vals, "-Kendall τ")
 
     axes[1].set_xticks(x)
-    axes[1].set_xticklabels(labels, rotation=35, ha="right", fontsize=8)
+    axes[1].set_xticklabels(labels, rotation=35, ha="right", fontsize=10)
 
     axes[0].set_title(
         "KADID-10k  ·  1000 COCO anchor\n"
         "Sorted by -Spearman ρ and -Kendall τ (descending)",
-        fontsize=11, fontweight="bold"
+        fontsize=16, fontweight="bold"
     )
 
     handles = [
@@ -627,7 +627,7 @@ def plot_tripanel(all_results, out_dir: Path):
         for n, c in BACKBONE_COLORS.items()
         if any(e.get("backbone_name") == n for e in all_results)
     ]
-    axes[0].legend(handles=handles, fontsize=8, loc="upper right", framealpha=0.9)
+    axes[0].legend(handles=handles, fontsize=10, loc="upper right", framealpha=0.9)
 
     plt.tight_layout()
     out = out_dir / "02_tripanel_metrics.png"

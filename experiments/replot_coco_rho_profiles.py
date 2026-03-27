@@ -47,13 +47,15 @@ def main():
     n_cols = 2
     n_bb = len(BACKBONES)  # 5
     n_rows = 3  # 3×2 grid: 5 backbones + 1 legend cell
-    fig, axes_grid = plt.subplots(n_rows, n_cols, figsize=(7 * n_cols, 5 * n_rows), sharey=True)
+    fig, axes_grid = plt.subplots(n_rows, n_cols, figsize=(7 * n_cols, 6.5 * n_rows),
+                                  sharey=True, constrained_layout=False)
+    fig.subplots_adjust(hspace=0.45)
     axes = [axes_grid[r][c] for r in range(n_rows) for c in range(n_cols)]
 
     # Hide the legend cell for now
     axes[5].set_visible(False)
 
-    fig.suptitle("Spearman ρ vs Layer — cumulative sweep (200 groups)", fontsize=13, y=1.01)
+    fig.suptitle("GMMD: Spearman ρ vs Layer for each Backbone", fontsize=30, y=1.01, fontweight="bold")
 
     for ax, bb in zip(axes[:n_bb], BACKBONES):
         sub = df[df["backbone"] == bb]
@@ -69,8 +71,8 @@ def main():
 
         ax.set_xticks(range(len(layers)))
         ax.set_xticklabels(names, rotation=75, ha="right", fontsize=6.5)
-        ax.set_title(bb, fontsize=10)
-        ax.set_xlabel("Layer")
+        ax.set_title(bb, fontsize=24)
+        ax.set_xlabel("Layer", fontsize=15)
         ax.axhline(0.5, color="gray", linewidth=0.5, linestyle="--")
         ax.set_ylim(0.2, 1.02)
         ax.grid(axis="y", alpha=0.3)
@@ -83,8 +85,8 @@ def main():
     ax_leg = axes[5]
     ax_leg.set_visible(True)
     ax_leg.axis("off")
-    ax_leg.legend(handles=handles, fontsize=8, title="γ median mult.",
-                  loc="center", ncol=2, frameon=True)
+    ax_leg.legend(handles=handles, fontsize=20, title="γ median mult.",
+                  title_fontsize=22, loc="center", ncol=2, frameon=True)
 
     fig.tight_layout()
     args.outdir.mkdir(parents=True, exist_ok=True)

@@ -626,7 +626,7 @@ def plot_tripanel(all_results, out_dir: Path):
     axes[0].set_title(
         "KADID-10k  ·  1 000 COCO anchor\n"
         "Tri par -Spearman ρ décroissant",
-        fontsize=11, fontweight="bold"
+        fontsize=16, fontweight="bold"
     )
 
     handles = [

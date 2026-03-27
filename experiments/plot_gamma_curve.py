@@ -32,6 +32,11 @@ from sklearn.preprocessing import StandardScaler
 
 BASE_DIR  = Path(__file__).parent.parent
 sys.path.insert(0, str(BASE_DIR / "src"))
+from gram_mmd.config import BACKBONE_CONFIGS
+
+def layer_label(backbone: str, layer: int) -> str:
+    names = BACKBONE_CONFIGS.get(backbone, {}).get("layer_names", {})
+    return names.get(layer, "?")
 
 CACHE_DIR = BASE_DIR / "results" / "synthetic_kadid_sweep" / "cache"
 OUT_DIR   = BASE_DIR / "results" / "synthetic_kadid_sweep" / "plots_new"
@@ -232,7 +237,8 @@ def plot_all_layers(bb_results: dict, backbone: str, out_path: Path):
         gamma_rbf = 1.0 / (2.0 * gammas)   # (G,) decreasing
         valid = np.isfinite(rho)
         ax.plot(gamma_rbf[valid], rho[valid],
-                color=colors[i], linewidth=1.3, alpha=0.85, label=f"L{l}")
+                color=colors[i], linewidth=1.3, alpha=0.85,
+                label=f"L{l:02d} {layer_label(backbone, l)}")
 
         # Dot at optimal γ_rbf
         best_i = int(np.nanargmax(rho))
@@ -248,11 +254,10 @@ def plot_all_layers(bb_results: dict, backbone: str, out_path: Path):
                    marker="^", edgecolors="black", linewidths=0.6)
 
     ax.set_xscale("log")
-    ax.set_xlabel("γ  [convention: exp(−γ·‖x−y‖²)]  (log scale)", fontsize=11)
-    ax.set_ylabel("mean Spearman ρ  (20 types)", fontsize=11)
-    ax.set_title(f"{backbone} — Spearman ρ vs γ  (500 values, log grid)\n"
-                 f"all layers · anchor=1000 COCO · 200 groups × 50 refs · standardisation ON",
-                 fontsize=11, fontweight="bold")
+    ax.set_xlabel("γ (log scale)", fontsize=11)
+    ax.set_ylabel("Spearman ρ", fontsize=11)
+    ax.set_title(f"{backbone} — Spearman ρ as a function of γ",
+                 fontsize=17, fontweight="bold", pad=15)
     ax.axhline(0.0, color="gray", linewidth=0.6, linestyle="--")
     ax.axhline(0.8, color="steelblue", linewidth=0.8, linestyle="--", alpha=0.5)
 

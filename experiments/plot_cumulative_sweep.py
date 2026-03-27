@@ -84,7 +84,7 @@ def plot_rho_profiles(df: pd.DataFrame):
     # hide unused axes
     for ax in axes[n_bb:]:
         ax.set_visible(False)
-    fig.suptitle("Spearman ρ vs Layer — cumulative sweep (200 groups)", fontsize=13, y=1.01)
+    fig.suptitle("Spearman ρ vs Layer — cumulative sweep (200 groups)", fontsize=20, y=1.01)
 
     for ax, bb in zip(axes, BACKBONES):
         sub = df[df["backbone"] == bb]
@@ -100,8 +100,8 @@ def plot_rho_profiles(df: pd.DataFrame):
 
         ax.set_xticks(range(len(layers)))
         ax.set_xticklabels(names, rotation=75, ha="right", fontsize=6.5)
-        ax.set_title(bb, fontsize=10)
-        ax.set_xlabel("Layer")
+        ax.set_title(bb, fontsize=15)
+        ax.set_xlabel("Layer", fontsize=12)
         ax.axhline(0.5, color="gray", linewidth=0.5, linestyle="--")
         ax.set_ylim(0.2, 1.02)
         ax.grid(axis="y", alpha=0.3)
@@ -244,11 +244,11 @@ def plot_boxplot_by_backbone(df: pd.DataFrame):
         patch.set_alpha(0.75)
 
     ax.set_xticks(range(1, len(sorted_bbs) + 1))
-    ax.set_xticklabels(sorted_bbs, rotation=20, ha="right", fontsize=9)
-    ax.set_ylabel("Spearman ρ", fontsize=11)
+    ax.set_xticklabels(sorted_bbs, rotation=20, ha="right", fontsize=13, fontweight="bold")
+    ax.set_ylabel("Spearman ρ", fontsize=16, fontweight="bold")
     ax.set_ylim(0.0, 1.02)
     ax.axhline(0.5, color="gray", linewidth=0.5, linestyle="--")
-    ax.set_title("Spearman ρ distribution per backbone\n(all layers × 7 best gammas)", fontsize=11)
+    ax.set_title("Spearman ρ distribution per backbone\n(all layers × 7 best gammas)", fontsize=20, fontweight="bold")
     ax.grid(axis="y", alpha=0.3)
 
     fig.tight_layout()
